@@ -6,12 +6,12 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tüket</h5>
+                <h5 class="modal-title" id="exampleModalLabel">İade Et</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btnClose">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form asp-action="ToConsume" asp-controller="AssetAction" method="post">
+            <form asp-action="ToReturn" asp-controller="AssetAction" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="lbl-asset"><label class="reqSpan">*</label> Abone No</label>
@@ -25,7 +25,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" style="background-color: #1753c9">
-                        <i class="fas fa-angle-right fa-fw"> </i>Tüket
+                        <i class="fas fa-angle-right fa-fw"> </i>İade Et
                     </button>
                 </div>
             </form>

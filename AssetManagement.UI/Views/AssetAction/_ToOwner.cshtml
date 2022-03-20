@@ -1,0 +1,57 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Zimmet Ata</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btnClose">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form asp-action="PutInStorage" asp-controller="AssetAction" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="lbl-asset"><label class="reqSpan">*</label> Zimmet Sahibi Kişi</label>
+                        <div class="input-group">
+                            <input class="form-control py-2 border-right-0 border" type="text">
+                            <span class="input-group-append">
+                                <divs class="input-group-text bg-transparent"><i class="fa fa-search"></i></divs>
+                            </span>
+                        </div>
+                        @*Eksik select2 uygula buraya*@
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl-asset"><label class="reqSpan">*</label> Zimmet Nedeni</label>
+                        @*@Html.DropDownListFor(a => a.OrderDetail.ProductID, Model.Products, "Seçiniz", new { @id = "productID",@class= "form-control" })*@
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl-asset"><label class="reqSpan">*</label> Zimmet Türü</label>
+                        @*@Html.DropDownListFor(a => a.OrderDetail.ProductID, Model.Products, "Seçiniz", new { @id = "productID",@class= "form-control" })*@
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl-asset"><label class="reqSpan">*</label> Zimmet Başlangıç Tarihi</label>
+                        <input type="datetime-local" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl-asset"> Zimmet Bitiş Tarihi</label>
+                        <input type="datetime-local" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl-asset"><label class="reqSpan">*</label> Açıklama</label>
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" style="background-color: #1753c9">
+                        <i class="fas fa-angle-right fa-fw"> </i>Zimmet Ata
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -27,9 +27,11 @@
     color: #1753c9;
     font-weight: bold;
 }
+
 #assetDetailTable {
-    font-size:14px;
+    font-size: 14px;
 }
+
 #dropdownAction {
     background-color: #F39C12;
     color: white;
@@ -38,18 +40,4 @@
     border-radius: 10px;
 }
 
-/*    #myrequired {
-        color: red;
-    }
 
-    span.fa {
-        position: absolute;
-        top: 75%;
-        right: 15px;
-        transform: translateY(-50%);
-        color: #1753c9;
-    }
-
-    .form-group {
-        position: relative;
-    }*/

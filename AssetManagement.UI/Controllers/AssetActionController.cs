@@ -46,7 +46,118 @@ namespace AssetManagement.UI.Controllers
         {
 
             return RedirectToAction(nameof(Index));
-        } 
+        }
         #endregion
+
+
+        /// <summary>
+        /// Aksiyonlardan İptal Et Modal sayfasının açılması
+        /// </summary>
+        /// <returns></returns>
+        #region İptal Et
+        public IActionResult _ToCancel()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ToCancel(string test)
+        {
+
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+        /// <summary>
+        /// Aksiyonlardan Yorum Ekle Modal sayfasının açılması
+        /// </summary>
+        /// <returns></returns>
+        #region Yorum Ekle
+        public IActionResult _AddComment()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddComment(string test)
+        {
+
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+        /// <summary>
+        /// Aksiyonlardan Kayıp Çalıntı Bildir Modal sayfasının açılması
+        /// </summary>
+        /// <returns></returns>
+        #region Kayıp Çalıntı Bildir
+        public IActionResult _ReportOfLostOrStolen()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ReportOfLostOrStolen(string test)
+        {
+
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+        /// <summary>
+        /// Aksiyonlardan Emekli Et Modal sayfasının açılması
+        /// </summary>
+        /// <returns></returns>
+        #region Emekli Et
+        public IActionResult _ToRetire()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ToRetire(string test)
+        {
+
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+        /// <summary>
+        /// Aksiyonlardan İade Et Modal sayfasının açılması
+        /// </summary>
+        /// <returns></returns>
+        #region İade Et
+        public IActionResult _ToReturn()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ToReturn(string test)
+        {
+
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+
+        /// <summary>
+        /// Aksiyonlardan Zimmet Ata Modal sayfasının açılması
+        /// </summary>
+        /// <returns></returns>
+        #region Zimmet Ata
+        public IActionResult _ToOwner()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ToOwner(string test)
+        {
+
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
     }
 }
