@@ -1,0 +1,114 @@
+﻿
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<div class="container">
+    <div class="aseet-div">
+        <section class="form-asset">
+            <form asp-action="AssetAdd" asp-controller="Asset" method="post">
+                <div class="row" style="padding: 40px;">
+
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="form-check-label lbl-asset">Barkodlu Ürün</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                    <divs class="slider round">
+                                    </divs>
+                                </label>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="lbl-asset"><label class="reqSpan">*</label> Miktar</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="lbl-asset"><label class="reqSpan">*</label> Birim</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        @*<input type="text" name="name" asp-for="" class="" value="" />*@
+                        <div class="form-group">
+                            <label class="lbl-asset"><label class="reqSpan">*</label> Barkod</label>
+                            <div class="input-group">
+                                <input class="form-control py-2 border-right-0 border" type="text">
+                                <span class="input-group-append">
+                                    <divs class="input-group-text bg-transparent"><i class="fa fa-barcode"></i></divs>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl-asset"><label class="reqSpan">*</label> Ürün Grubu</label>
+                            @*@Html.DropDownListFor(a => a.OrderDetail.ProductID, Model.Products, "Seçiniz", new { @id = "productID",@class= "form-control" })*@
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl-asset"><label class="reqSpan">*</label> Ürün Tipi</label>
+                            @*@Html.DropDownListFor(a => a.OrderDetail.ProductID, Model.Products, "Seçiniz", new { @id = "productID",@class= "form-control" })*@
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl-asset"><label class="reqSpan">*</label> Marka</label>
+                            @*@Html.DropDownListFor(a => a.OrderDetail.ProductID, Model.Products, "Seçiniz", new { @id = "productID",@class= "form-control" })*@
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl-asset"><label class="reqSpan">*</label> Model</label>
+                            @*@Html.DropDownListFor(a => a.OrderDetail.ProductID, Model.Products, "Seçiniz", new { @id = "productID",@class= "form-control" })*@
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl-asset">Garantili mi</label>
+                            @*@Html.DropDownListFor(a => a.OrderDetail.ProductID, Model.Products, "Seçiniz", new { @id = "productID",@class= "form-control" })*@
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl-asset"><label class="reqSpan">*</label> Açıklama</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="lbl-asset"><label class="reqSpan">*</label> Ürün Giriş Tarihi</label>
+                            <input type="datetime-local" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl-asset">Ürün Emeklilik Tarihi</label>
+                            <input type="datetime-local" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl-asset">Ürünün Maliyeti</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl-asset">Ürünün Para Birimi</label>
+                            @*@Html.DropDownListFor(a => a.OrderDetail.ProductID, Model.Products, "Seçiniz", new { @id = "productID",@class= "form-control" })*@
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl-asset">Ürünün Güncel Fiyatı</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl-asset">Ürünün Güncel Fiyat Para Birimi</label>
+                            @*@Html.DropDownListFor(a => a.OrderDetail.ProductID, Model.Products, "Seçiniz", new { @id = "productID",@class= "form-control" })*@
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-10"></div>
+                        <div class="col-md-2">
+                            <input type="submit" style=" width: 100%;" name="name" class="btn btn-primary" value="Kaydet" />
+                        </div>
+                      
+                    </div>
+                </div>
+            </form>
+        </section>
+
+    </div>
+
+</div>
+

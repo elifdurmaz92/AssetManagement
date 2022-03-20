@@ -1,0 +1,55 @@
+﻿.modal-content {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 9px !important;
+    outline: 0;
+}
+
+.modal.show .modal-dialog {
+    background-color: #1753c9;
+    padding: 1%;
+}
+
+#exampleModalLabel {
+    color: #1753c9;
+    font-weight: bold;
+}
+
+#btnClose {
+    color: #1753c9;
+    font-weight: bold;
+}
+#assetDetailTable {
+    font-size:14px;
+}
+#dropdownAction {
+    background-color: #F39C12;
+    color: white;
+    width: 60%;
+    height: 80px;
+    border-radius: 10px;
+}
+
+/*    #myrequired {
+        color: red;
+    }
+
+    span.fa {
+        position: absolute;
+        top: 75%;
+        right: 15px;
+        transform: translateY(-50%);
+        color: #1753c9;
+    }
+
+    .form-group {
+        position: relative;
+    }*/
