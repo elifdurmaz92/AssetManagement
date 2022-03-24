@@ -10,13 +10,7 @@ namespace AssetManagement.Core.Entity
         [Key]
         public int ID { get; set; }
 
-        public int RoleID { get; set; }
-
-        public int PageID { get; set; }
-
-        public int ClaimID { get; set; }
-
-        public string Date { get; set; }
+        public string Description { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 
@@ -28,10 +22,6 @@ namespace AssetManagement.Core.Entity
 
         public bool? IsActive { get; set; }
 
-        public virtual Claim Claim { get; set; }
-
-        public virtual Page Page { get; set; }
-
-        public virtual Role Role { get; set; }
+        public virtual ICollection<PageClaimDetail> PageClaimDetail { get; set; }
     }
 }

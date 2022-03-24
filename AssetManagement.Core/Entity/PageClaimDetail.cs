@@ -5,12 +5,18 @@ using System.Text;
 
 namespace AssetManagement.Core.Entity
 {
-    public class Claim:IEntity
+    public class PageClaimDetail:IEntity
     {
         [Key]
         public int ID { get; set; }
 
-        public string Description { get; set; }
+        public int RoleID { get; set; }
+
+        public int PageID { get; set; }
+
+        public int ClaimID { get; set; }
+
+        public string Date { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 
@@ -22,6 +28,10 @@ namespace AssetManagement.Core.Entity
 
         public bool? IsActive { get; set; }
 
-        public virtual ICollection<PageClaim> PageClaim { get; set; }
+        public virtual PageClaim PageClaim { get; set; }
+
+        public virtual Page Page { get; set; }
+
+        public virtual Role Role { get; set; }
     }
 }

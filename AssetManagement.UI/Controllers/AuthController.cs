@@ -1,4 +1,4 @@
-﻿using AssetManagement.DTO.VM;
+﻿using AssetManagement.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,6 @@ namespace AssetManagement.UI.Controllers
 {
     public class AuthController : Controller
     {
-        //DAL katmanı koyarak devam et direk repoyu çağırma!!!
 
         public IActionResult Login()
         {
@@ -25,9 +24,6 @@ namespace AssetManagement.UI.Controllers
         {
             return View();
         }
-        public IActionResult Register()
-        {
-            return View();
-        }
+
     }
 }

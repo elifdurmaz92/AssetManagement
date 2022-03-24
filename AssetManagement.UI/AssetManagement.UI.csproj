@@ -4,8 +4,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AssetManagement.DTO\AssetManagement.DTO.csproj" />
-  </ItemGroup>
-
 </Project>

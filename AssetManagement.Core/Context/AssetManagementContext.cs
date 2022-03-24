@@ -13,37 +13,36 @@ namespace AssetManagement.Core.Context
             optionsBuilder.UseSqlServer(@"server=DESKTOP-47MR3VQ;Database=AssetManagement;integrated security=True;MultipleActiveResultSets=True;");
         }
 
-        public virtual DbSet<ActionStatus> ActionStatus { get; set; }
-        public virtual DbSet<Asset> Asset { get; set; }
-        public virtual DbSet<AssetAction> AssetAction { get; set; }
-        public virtual DbSet<AssetBarcode> AssetBarcode { get; set; }
-        public virtual DbSet<AssetCustomer> AssetCustomer { get; set; }
-        public virtual DbSet<AssetOwner> AssetOwner { get; set; }
-        public virtual DbSet<AssetStatus> AssetStatus { get; set; }
-        public virtual DbSet<AssetType> AssetType { get; set; }
-        public virtual DbSet<AssetWithoutBarcode> AssetWithoutBarcode { get; set; }
-        public virtual DbSet<Claim> Claim { get; set; }
-        public virtual DbSet<Comment> Comment { get; set; }
-        public virtual DbSet<CommType> CommType { get; set; }
-        public virtual DbSet<Communication> Communication { get; set; }
-        public virtual DbSet<Company> Company { get; set; }
-        public virtual DbSet<Currency> Currency { get; set; }
-        public virtual DbSet<Customer> Customer { get; set; }
-        public virtual DbSet<Document> Document { get; set; }
-        public virtual DbSet<Group> Group { get; set; }
-        public virtual DbSet<LoginInfo> LoginInfo { get; set; }
-        public virtual DbSet<MasterDetail> MasterDetail { get; set; }
-        public virtual DbSet<OwnerType> OwnerType { get; set; }
-        public virtual DbSet<Page> Page { get; set; }
-        public virtual DbSet<PageClaim> PageClaim { get; set; }
-        public virtual DbSet<Personnel> Personnel { get; set; }
-        public virtual DbSet<PersonnelLoginInfo> PersonnelLoginInfo { get; set; }
-        public virtual DbSet<PersonnelTeam> PersonnelTeam { get; set; }
-        public virtual DbSet<Price> Price { get; set; }
-        public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<RolePersonnel> RolePersonnel { get; set; }
-        public virtual DbSet<Status> Status { get; set; }
-        public virtual DbSet<Team> Team { get; set; }
-        public virtual DbSet<Unit> Unit { get; set; }
+        public DbSet<ActionStatus> ActionStatus { get; set; }
+        public DbSet<Asset> Asset { get; set; }
+        public DbSet<AssetAction> AssetAction { get; set; }
+        public DbSet<AssetBarcode> AssetBarcode { get; set; }
+        public DbSet<AssetCustomer> AssetCustomer { get; set; }
+        public DbSet<AssetOwner> AssetOwner { get; set; }
+        public DbSet<AssetStatus> AssetStatus { get; set; }
+        public DbSet<AssetType> AssetType { get; set; }
+        public DbSet<AssetWithoutBarcode> AssetWithoutBarcode { get; set; }
+        public DbSet<Comment> Comment { get; set; }
+        public DbSet<CommType> CommType { get; set; }
+        public DbSet<Communication> Communication { get; set; }
+        public DbSet<Company> Company { get; set; }
+        public DbSet<Currency> Currency { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Document> Document { get; set; }
+        public DbSet<Group> Group { get; set; }
+        public DbSet<MasterDetail> MasterDetail { get; set; }
+        public DbSet<OwnerType> OwnerType { get; set; }
+        public DbSet<Page> Page { get; set; }
+        public DbSet<PageClaim> PageClaim { get; set; }
+        public DbSet<PageClaimDetail> PageClaimDetail { get; set; }
+        public DbSet<Personnel> Personnel { get; set; }
+        public DbSet<PersonnelLoginInfo> PersonnelLoginInfo { get; set; }
+        public DbSet<PersonnelTeam> PersonnelTeam { get; set; }
+        public DbSet<Price> Price { get; set; }
+        public DbSet<Role> Role { get; set; }
+        public DbSet<RolePersonnel> RolePersonnel { get; set; }
+        public DbSet<Status> Status { get; set; }
+        public DbSet<Team> Team { get; set; }
+        public DbSet<Unit> Unit { get; set; }
     }
 }

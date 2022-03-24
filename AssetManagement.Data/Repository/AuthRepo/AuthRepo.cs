@@ -10,8 +10,8 @@ namespace AssetManagement.Data.Repository.AuthRepo
 {
     public class AuthRepo : IAuthRepo
     {
-        AssetManagementContext _context;
-        public AuthRepo(AssetManagementContext context)
+        AuthContext _context;
+        public AuthRepo(AuthContext context)
         {
             _context = context;
 
@@ -55,6 +55,11 @@ namespace AssetManagement.Data.Repository.AuthRepo
             UserPasswordSave(password, out passHash, out passSalt);
             user.PasswordSalt = passSalt;
             user.PasswordHash = passHash;
+            user.CreatedDate = DateTime.Now;
+            user.ModifiedDate = DateTime.Now;
+            user.CreatedBy = 1;
+            user.ModifiedBy = 1;
+            user.IsActive = true;
             await _context.LoginInfo.AddAsync(user);
             await _context.SaveChangesAsync();
             return user;
