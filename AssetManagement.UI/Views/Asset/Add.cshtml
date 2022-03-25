@@ -34,7 +34,9 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="lbl-asset"><label class="reqSpan">*</label> Birim</label>
-                                                <input type="text" class="form-control">
+                                                @*<input type="text" class="form-control">*@
+                                                @*seçim alanı o yüzden birim tablosundan getir*@
+                                                @*@Html.DropDownListFor(a => a.OrderDetail.ProductID, Model.Products, "Seçiniz", new { @id = "productID",@class= "form-control" })*@
                                             </div>
                                         </div>
 

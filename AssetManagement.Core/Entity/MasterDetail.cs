@@ -11,6 +11,7 @@ namespace AssetManagement.Core.Entity
         public int ID { get; set; }
 
         public int MasterID { get; set; }
+        public int AssetTypeID { get; set; }
 
         public string Description { get; set; }
 
@@ -25,5 +26,6 @@ namespace AssetManagement.Core.Entity
         public bool? IsActive { get; set; }
 
         public virtual ICollection<Asset> Asset { get; set; }
+        public virtual AssetType AssetType { get; set; }
     }
 }

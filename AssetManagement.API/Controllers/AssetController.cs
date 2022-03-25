@@ -11,5 +11,6 @@ namespace AssetManagement.API.Controllers
     [ApiController]
     public class AssetController : ControllerBase
     {
+
     }
 }

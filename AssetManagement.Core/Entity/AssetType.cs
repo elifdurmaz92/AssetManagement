@@ -22,5 +22,6 @@ namespace AssetManagement.Core.Entity
         public bool? IsActive { get; set; }
 
         public virtual ICollection<Asset> Asset { get; set; }
+        public virtual ICollection<MasterDetail> MasterDetail { get; set; }
     }
 }
