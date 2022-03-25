@@ -7,13 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetManagement.UI", "Asset
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetManagement.Core", "AssetManagement.Core\AssetManagement.Core.csproj", "{CDF71945-8240-40DA-9698-EDFD54E6F0BA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetManagement.DAL", "AssetManagement.DAL\AssetManagement.DAL.csproj", "{31A02C0C-F615-431F-9771-B394E9638290}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetManagement.Data", "AssetManagement.Data\AssetManagement.Data.csproj", "{5B3A513D-53DB-484B-9ABF-E2327785A08F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetManagement.DTO", "AssetManagement.DTO\AssetManagement.DTO.csproj", "{40AE894A-04C3-4B0A-8268-70C1C03A1A23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssetManagement.API", "AssetManagement.API\AssetManagement.API.csproj", "{4FE3A560-1FD6-4A55-8F55-78D2D0D8F488}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetManagement.API", "AssetManagement.API\AssetManagement.API.csproj", "{4FE3A560-1FD6-4A55-8F55-78D2D0D8F488}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetManagement.BLL", "AssetManagement.BLL\AssetManagement.BLL.csproj", "{3D24367D-8535-46D2-9138-8D54D0F970D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssetManagement.DAL", "AssetManagement.DAL\AssetManagement.DAL.csproj", "{80995D34-40AE-436A-AF79-FAA2F5CB684B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +31,6 @@ Global
 		{CDF71945-8240-40DA-9698-EDFD54E6F0BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDF71945-8240-40DA-9698-EDFD54E6F0BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDF71945-8240-40DA-9698-EDFD54E6F0BA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{31A02C0C-F615-431F-9771-B394E9638290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31A02C0C-F615-431F-9771-B394E9638290}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{31A02C0C-F615-431F-9771-B394E9638290}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{31A02C0C-F615-431F-9771-B394E9638290}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5B3A513D-53DB-484B-9ABF-E2327785A08F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5B3A513D-53DB-484B-9ABF-E2327785A08F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B3A513D-53DB-484B-9ABF-E2327785A08F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +43,14 @@ Global
 		{4FE3A560-1FD6-4A55-8F55-78D2D0D8F488}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FE3A560-1FD6-4A55-8F55-78D2D0D8F488}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FE3A560-1FD6-4A55-8F55-78D2D0D8F488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D24367D-8535-46D2-9138-8D54D0F970D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D24367D-8535-46D2-9138-8D54D0F970D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D24367D-8535-46D2-9138-8D54D0F970D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D24367D-8535-46D2-9138-8D54D0F970D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80995D34-40AE-436A-AF79-FAA2F5CB684B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80995D34-40AE-436A-AF79-FAA2F5CB684B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80995D34-40AE-436A-AF79-FAA2F5CB684B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80995D34-40AE-436A-AF79-FAA2F5CB684B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

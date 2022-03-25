@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AssetManagement.Data\AssetManagement.Data.csproj" />
+    <ProjectReference Include="..\AssetManagement.DAL\AssetManagement.DAL.csproj" />
     <ProjectReference Include="..\AssetManagement.DTO\AssetManagement.DTO.csproj" />
   </ItemGroup>
 

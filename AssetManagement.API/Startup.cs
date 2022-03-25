@@ -13,9 +13,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using AssetManagement.Data.Repository.AuthRepo;
 using AssetManagement.Core.Context;
 using Microsoft.EntityFrameworkCore;
+using AssetManagement.DAL;
+using AssetManagement.Data.Repository.AuthRepo;
 
 namespace AssetManagement.API
 {
@@ -39,9 +40,10 @@ namespace AssetManagement.API
             {
                 options.AddDefaultPolicy(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
             });
-  
 
             services.AddScoped<IAuthRepo, AuthRepo>();
+            services.AddScoped<IAuthDAL, AuthDAL>();
+
 
             var tkn = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
             services.AddAuthentication();

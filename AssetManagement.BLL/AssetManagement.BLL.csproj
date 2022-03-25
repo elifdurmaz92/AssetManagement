@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AssetManagement.Data\AssetManagement.Data.csproj" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AssetManagement.DTO\AssetManagement.DTO.csproj" />
   </ItemGroup>
 

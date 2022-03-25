@@ -45,18 +45,12 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading"></div>
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-8" style="background-color: #0a58ca; border-radius: 10px; ">
-                                <a class="nav-link" style="color: white;" href="@Url.Action("Add", "Asset")">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-plus"></i></div>
-                                    Yeni Kayıt
-                                </a>
-                            </div>
-                            <div class="col-md-1"></div>
-
+                        <div class="newAssetdiv">
+                            <div class="sb-nav-link-icon assetIcondiv"><i style="margin-left: 10px; margin-top: 10px;" class="fas fa-plus"></i></div>
+                            <a class="nav-link" style="color: white;" href="@Url.Action("Add", "Asset")">
+                                Yeni Kayıt
+                            </a>
                         </div>
-
                         <div class="sb-sidenav-menu-heading"></div>
                         <a class="nav-link fw-bold" style="color: #0a58ca;" href="@Url.Action("Add", "Asset")">
                             <div class="sb-nav-link-icon"><i class="fa fa-folder"></i></div>

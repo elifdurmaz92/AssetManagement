@@ -1,15 +1,9 @@
-﻿using AssetManagement.Core.Entity;
-using AssetManagement.Data.Repository.AuthRepo;
+﻿using AssetManagement.DAL;
 using AssetManagement.DTO.DTO;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,18 +13,16 @@ namespace AssetManagement.API.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        IAuthRepo _repo;
-        IConfiguration _conf;
-        public AuthController(IAuthRepo repo,IConfiguration conf)
+        IAuthDAL _dal;
+        public AuthController(IAuthDAL dal)
         {
-            _repo = repo;
-            _conf = conf;
+            _dal = dal;
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDTO dto)
         {
-            if (await _repo.UserExist(dto.UserName))
+            if (!await _dal.RegisterAction(dto))
             {
                 ModelState.AddModelError("error username notvalid", "zaten varsın");
             }
@@ -40,43 +32,21 @@ namespace AssetManagement.API.Controllers
                 return BadRequest();
 
             }
-            var username = new LoginInfo() { UserName = dto.UserName };
-
-            await _repo.Register(username, dto.Password);
-
             return StatusCode(201);
         }
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO dto)
         {
-
-            var UserFound = await _repo.Login(dto.UserName, dto.Password);
-            if (UserFound == null)
+            if (!ModelState.IsValid)
             {
-                return null;
+                return BadRequest();
             }
             else
             {
-                var key = Encoding.ASCII.GetBytes(_conf.GetSection("AppSettings:Token").Value);
-
-                var description = new SecurityTokenDescriptor()
-                {
-                    Expires = DateTime.Now.AddDays(1),
-                    Subject = new System.Security.Claims.ClaimsIdentity(new Claim[]
-                    {
-                        new Claim(ClaimTypes.NameIdentifier, UserFound.ID.ToString()),
-                        new Claim(ClaimTypes.Name, UserFound.UserName)
-        
-                    }),
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
-
-                };
-
-                var tokenHandler = new JwtSecurityTokenHandler();
-                var token = tokenHandler.CreateToken(description);
-                var tokenValue = tokenHandler.WriteToken(token);
+                var tokenValue = await _dal.LoginAction(dto);
                 return Ok(tokenValue);
             }
+
         }
     }
 }
