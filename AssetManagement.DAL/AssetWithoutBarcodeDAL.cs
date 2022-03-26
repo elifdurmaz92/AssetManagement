@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AssetManagement.DAL
 {
-    public class MasterDetailDAL:EfRepoBase<MasterDetail, AssetManagementContext>, IMasterDetailDAL
+    public class AssetWithoutBarcodeDAL: EfRepoBase<AssetWithoutBarcode, AssetManagementContext>, IAssetWithoutBarcodeDAL
     {
     }
 }

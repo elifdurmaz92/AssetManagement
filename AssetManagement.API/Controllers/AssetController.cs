@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AssetManagement.Core.Entity;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,15 @@ namespace AssetManagement.API.Controllers
     [ApiController]
     public class AssetController : ControllerBase
     {
+        public AssetController()
+        {
 
+        }
+
+        [HttpPost("~/api/addasset")]
+        public IActionResult Post([FromBody] Asset entity)
+        {
+
+        }
     }
 }

@@ -17,6 +17,8 @@ namespace AssetManagement.Core.Context
         public DbSet<Asset> Asset { get; set; }
         public DbSet<AssetAction> AssetAction { get; set; }
         public DbSet<AssetBarcode> AssetBarcode { get; set; }
+        public DbSet<AssetBrand> AssetBrand { get; set; }
+        public DbSet<AssetModel> AssetModel { get; set; }
         public DbSet<AssetCustomer> AssetCustomer { get; set; }
         public DbSet<AssetOwner> AssetOwner { get; set; }
         public DbSet<AssetStatus> AssetStatus { get; set; }
@@ -28,10 +30,9 @@ namespace AssetManagement.Core.Context
         public DbSet<Company> Company { get; set; }
         public DbSet<Currency> Currency { get; set; }
         public DbSet<Customer> Customer { get; set; }
-        public DbSet<Document> Document { get; set; }
+        public DbSet<AssetDocument> AssetDocument { get; set; }
         public DbSet<AssetGroup> Group { get; set; }
-        public DbSet<MasterDetail> MasterDetail { get; set; }
-        public DbSet<OwnerType> OwnerType { get; set; }
+         public DbSet<OwnerType> OwnerType { get; set; }
         public DbSet<Page> Page { get; set; }
         public DbSet<PageClaim> PageClaim { get; set; }
         public DbSet<PageClaimDetail> PageClaimDetail { get; set; }
