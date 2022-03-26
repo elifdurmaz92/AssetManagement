@@ -29,7 +29,7 @@ namespace AssetManagement.Core.Context
         public DbSet<Currency> Currency { get; set; }
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Document> Document { get; set; }
-        public DbSet<Group> Group { get; set; }
+        public DbSet<AssetGroup> Group { get; set; }
         public DbSet<MasterDetail> MasterDetail { get; set; }
         public DbSet<OwnerType> OwnerType { get; set; }
         public DbSet<Page> Page { get; set; }

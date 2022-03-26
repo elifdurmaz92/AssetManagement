@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace AssetManagement.Core.Entity
 {
-   public class MasterDetail:IEntity
+    public class AssetBrand:IEntity
     {
         [Key]
         public int ID { get; set; }
-
-        public int MasterID { get; set; }
         public int AssetTypeID { get; set; }
-
         public string Description { get; set; }
 
         public DateTime? CreatedDate { get; set; }
@@ -25,7 +23,9 @@ namespace AssetManagement.Core.Entity
 
         public bool? IsActive { get; set; }
 
-        public virtual ICollection<Asset> Asset { get; set; }
+        [ForeignKey("AssetTypeID")]
         public virtual AssetType AssetType { get; set; }
+        public virtual ICollection<Asset> Asset { get; set; }
+
     }
 }

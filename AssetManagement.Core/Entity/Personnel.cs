@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace AssetManagement.Core.Entity
@@ -33,6 +34,7 @@ namespace AssetManagement.Core.Entity
 
         public virtual ICollection<Communication> Communication { get; set; }
 
+        [ForeignKey("CompanyID")]
         public virtual Company Company { get; set; }
 
         public virtual ICollection<PersonnelLoginInfo> PersonnelLoginInfo { get; set; }

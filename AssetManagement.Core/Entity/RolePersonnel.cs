@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace AssetManagement.Core.Entity
@@ -26,8 +27,12 @@ namespace AssetManagement.Core.Entity
 
         public bool? IsActive { get; set; }
 
+
+        [ForeignKey("PersonnelID")]
         public virtual Personnel Personnel { get; set; }
 
+
+        [ForeignKey("RoleID")]
         public virtual Role Role { get; set; }
     }
 }

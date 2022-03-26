@@ -17,6 +17,8 @@ using AssetManagement.Core.Context;
 using Microsoft.EntityFrameworkCore;
 using AssetManagement.DAL;
 using AssetManagement.Data.Repository.AuthRepo;
+using AutoMapper;
+using AssetManagement.Data.Mapping;
 
 namespace AssetManagement.API
 {
@@ -41,8 +43,24 @@ namespace AssetManagement.API
                 options.AddDefaultPolicy(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
             });
 
+            #region Auto Mapper Configurations
+            var mapperConfig = new MapperConfiguration(mc =>
+               {
+                   mc.AddProfile(new MapProfile());
+               });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+            #endregion
+
+            #region DAL
             services.AddScoped<IAuthRepo, AuthRepo>();
             services.AddScoped<IAuthDAL, AuthDAL>();
+            services.AddScoped<IAssetTypeDAL, AssetTypeDAL>();
+            services.AddScoped<IAssetGroupDAL, AssetGroupDAL>();
+
+
+            #endregion
 
 
             var tkn = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);

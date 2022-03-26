@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace AssetManagement.Core.Entity
@@ -14,11 +15,12 @@ namespace AssetManagement.Core.Entity
 
         public int CompanyID { get; set; }
 
-        public int GroupID { get; set; }
+        public int AssetGroupID { get; set; }
 
         public int AssetTypeID { get; set; }
 
-        public int MasterDetailID { get; set; }
+        public int AssetBrandID { get; set; }
+        public int AssetModelID { get; set; }
 
         public int CurrencyID { get; set; }
 
@@ -26,6 +28,7 @@ namespace AssetManagement.Core.Entity
 
         public decimal? Cost { get; set; }
 
+        public bool? IsBarcode { get; set; }
         public bool? Guarantee { get; set; }
 
         public DateTime? EntryDate { get; set; }
@@ -42,14 +45,22 @@ namespace AssetManagement.Core.Entity
 
         public bool? IsActive { get; set; }
 
+        [ForeignKey("CompanyID")]
         public virtual Company Company { get; set; }
 
+        [ForeignKey("CurrencyID")]
         public virtual Currency Currency { get; set; }
 
-        public virtual Group Group { get; set; }
+        [ForeignKey("AssetGroupID")]
+        public virtual AssetGroup AssetGroup { get; set; }
 
-        public virtual MasterDetail MasterDetail { get; set; }
+        [ForeignKey("AssetBrandID")]
+        public virtual AssetBrand AssetBrand { get; set; }
 
+        [ForeignKey("AssetModelID")]
+        public virtual AssetModel AssetModel { get; set; }
+
+        [ForeignKey("AssetTypeID")]
         public virtual AssetType AssetType { get; set; }
 
         public virtual ICollection<AssetBarcode> AssetBarcode { get; set; }
@@ -65,8 +76,6 @@ namespace AssetManagement.Core.Entity
         public virtual ICollection<Comment> Comment { get; set; }
 
         public virtual ICollection<Document> Document { get; set; }
-
-
         public virtual ICollection<Price> Price { get; set; }
     }
 }

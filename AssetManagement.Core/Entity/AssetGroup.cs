@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AssetManagement.Core.Entity
 {
-    public class Group : IEntity
+    public class AssetGroup:IEntity
     {
         [Key]
         public int ID { get; set; }

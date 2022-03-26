@@ -6,17 +6,12 @@ using System.Text;
 
 namespace AssetManagement.Core.Entity
 {
-    public class Price:IEntity
+    public class AssetModel:IEntity
     {
         [Key]
         public int ID { get; set; }
-
-        public int AssetID { get; set; }
-        public decimal Price1 { get; set; }
-
-        public int CurrencyID { get; set; }
-
-        public DateTime Date { get; set; }
+        public int AssetBrandID { get; set; }
+        public string Description { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 
@@ -28,10 +23,8 @@ namespace AssetManagement.Core.Entity
 
         public bool? IsActive { get; set; }
 
-        [ForeignKey("AssetID")]
-        public virtual Asset Asset { get; set; }
-
-        [ForeignKey("CurrencyID")]
-        public virtual Currency Currency { get; set; }
+        [ForeignKey("AssetBrandID")]
+        public virtual AssetBrand AssetBrand { get; set; }
+        public virtual ICollection<Asset> Asset { get; set; }
     }
 }
