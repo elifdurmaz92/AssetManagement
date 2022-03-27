@@ -13,9 +13,5 @@ namespace AssetManagement.DTO.DTO
         public DateTime ModifiedDate { get; set; }
         public int ModifiedBy { get; set; }
         public bool IsActive { get; set; }
-        public override string ToString()
-        {
-            return Description.ToUpper();
-        }
     }
 }

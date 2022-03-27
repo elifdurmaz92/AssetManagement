@@ -24,8 +24,8 @@ namespace AssetManagement.DTO.VM
         public DateTime RetireDate { get; set; }
 
         public string Barcode { get; set; }
-        public decimal? Quantity { get; set; }
-        public int? UnitID { get; set; }
+        public decimal Quantity { get; set; }
+        public int UnitID { get; set; }
 
         public AssetPriceDTO AssetPrice { get; set; }
         public IEnumerable<AssetGroupDTO> Group { get; set; }

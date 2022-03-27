@@ -33,6 +33,7 @@ namespace AssetManagement.UI.Controllers
                 Currency = await _pro.GetCurrency(),
                 Unit = await _pro.GetUnit(),
                 AssetType = await _pro.GetAssetType(),
+                AssetPrice=new AssetPriceDTO()
 
             };
             return View(addAssetVM);

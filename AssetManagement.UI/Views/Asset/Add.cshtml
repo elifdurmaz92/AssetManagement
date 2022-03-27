@@ -22,7 +22,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <label class="switch">
-                                                <input class="form-check-input" asp-for="IsBarcode" type="checkbox" id="AddAssetCheckID">
+                                                <input class="form-check-input" asp-for="@Model.IsBarcode" type="checkbox" id="AddAssetCheckID">
                                                 <divs class="slider round">
                                                 </divs>
                                             </label>
@@ -31,13 +31,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="lbl-asset"><label class="reqSpan">*</label> Miktar</label>
-                                                    <input type="text" asp-for="Quantity" class="form-control">
+                                                    <input type="text" asp-for="@Model.Quantity" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="lbl-asset"><label class="reqSpan">*</label> Birim</label>
-                                                    <select asp-for="UnitID" asp-items="@(new SelectList(Model.Unit))" class="form-control">
+                                                    <select asp-for="@Model.UnitID" asp-items="@(new SelectList(Model.Unit, "ID","Description"))" class="form-control">
                                                         <option value="">Seçiniz</option>
                                                     </select>
                                                 </div>
@@ -56,65 +56,65 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Ürün Grubu</label>
-                                        <select asp-for="GroupID" asp-items="@(new SelectList(Model.Group))" class="form-control">
+                                        <select asp-for="@Model.GroupID" asp-items="@(new SelectList(Model.Group, "ID","Description"))" class="form-control">
                                             <option value="">Seçiniz</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Ürün Tipi</label>
-                                        <select asp-for="AssetTypeID" asp-items="@(new SelectList(Model.AssetType, "ID","Description"))" class="form-control" id="assetTypeSelectID">
+                                        <select asp-for="@Model.AssetTypeID" asp-items="@(new SelectList(Model.AssetType, "ID","Description"))" class="form-control" id="assetTypeSelectID">
                                             <option value="">Seçiniz</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Marka</label>
-                                        <select asp-for="AssetBrandID" asp-items="@(new List<SelectListItem>())" class="form-control" id="brandSelectID">
+                                        <select asp-for="@Model.AssetBrandID" asp-items="@(new List<SelectListItem>())" class="form-control" id="brandSelectID">
                                             <option value="">Seçiniz</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Model</label>
-                                        <select asp-for="AssetModelID" asp-items="@(new List<SelectListItem>())" class="form-control" id="modelSelectID">
+                                        <select asp-for="@Model.AssetModelID" asp-items="@(new List<SelectListItem>())" class="form-control" id="modelSelectID">
                                             <option value="">Seçiniz</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset">Garantili mi</label>
-                                        <select asp-for="Guarantee" asp-items="Html.GetEnumSelectList<GuaranteeEnum>()" class="form-control">
+                                        <select asp-for="@Model.Guarantee" asp-items="Html.GetEnumSelectList<GuaranteeEnum>()" class="form-control">
                                             <option value="">Seçiniz</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Açıklama</label>
-                                        <textarea class="form-control" asp-for="Description" rows="3"></textarea>
+                                        <textarea class="form-control" asp-for="@Model.Description" rows="3"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Ürün Giriş Tarihi</label>
-                                        <input type="datetime-local" asp-for="EntryDate" class="form-control">
+                                        <input type="datetime-local" asp-for="@Model.EntryDate" class="form-control">
                                     </div>
                                     <div class="form-group" style="pointer-events: none; opacity: 0.8;">
                                         <label class="lbl-asset">Ürün Emeklilik Tarihi</label>
-                                        <input type="datetime-local" asp-for="RetireDate" class="form-control">
+                                        <input type="datetime-local" asp-for="@Model.RetireDate" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset">Ürünün Maliyeti</label>
-                                        <input type="text" asp-for="Cost" class="form-control">
+                                        <input type="text" asp-for="@Model.Cost" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset">Ürünün Para Birimi</label>
-                                        <select asp-for="CurrencyID" asp-items="@(new SelectList(Model.Currency))" class="form-control">
+                                        <select asp-for="@Model.CurrencyID" asp-items="@(new SelectList(Model.Currency, "ID","Description"))" class="form-control">
                                             <option value="">Seçiniz</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset">Ürünün Güncel Fiyatı</label>
-                                        <input type="text" asp-for="AssetPrice.Price" class="form-control">
+                                        <input type="text" asp-for="@Model.AssetPrice.Price" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset">Ürünün Güncel Fiyat Para Birimi</label>
-                                        <select asp-for="AssetPrice.CurrencyID" asp-items="@(new SelectList(Model.Currency))" class="form-control">
+                                        <select asp-for="@Model.AssetPrice.CurrencyID" asp-items="@(new SelectList(Model.Currency, "ID","Description"))" class="form-control">
                                             <option value="">Seçiniz</option>
                                         </select>
                                     </div>
