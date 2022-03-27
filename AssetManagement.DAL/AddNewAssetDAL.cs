@@ -1,7 +1,8 @@
-﻿using AssetManagement.DTO.VM;
+﻿using AssetManagement.DTO.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Transactions;
 
 namespace AssetManagement.DAL
 {
@@ -21,8 +22,22 @@ namespace AssetManagement.DAL
             _documentDAL = documentDAL;
 
         }
-        public void AddNewAsset(AddAssetVM assetVM)
+        public void AddNewAsset(AddNewAssetDTO newassetDTO)
         {
+            using (TransactionScope scope=new TransactionScope())
+            {
+                try
+                {
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+                scope.Complete();
+            }
             throw new NotImplementedException();
         }
     }

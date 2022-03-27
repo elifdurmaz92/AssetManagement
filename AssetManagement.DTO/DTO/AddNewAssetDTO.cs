@@ -1,12 +1,10 @@
-﻿using AssetManagement.DTO.DTO;
-using AssetManagement.DTO.Enum;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AssetManagement.DTO.VM
+namespace AssetManagement.DTO.DTO
 {
-    public class AddAssetVM
+    public class AddNewAssetDTO
     {
         public int ID { get; set; }
         public string RegistrationNumber { get; set; }
@@ -22,19 +20,11 @@ namespace AssetManagement.DTO.VM
         public bool Guarantee { get; set; }
         public DateTime EntryDate { get; set; }
         public DateTime RetireDate { get; set; }
-
         public string Barcode { get; set; }
         public decimal Quantity { get; set; }
         public int UnitID { get; set; }
         public string FilePath { get; set; }
-
         public decimal AssetPrice { get; set; }
         public int AssetPriceCurrencyID { get; set; }
-
-        public IEnumerable<AssetGroupDTO> Group { get; set; }
-        public IEnumerable<AssetTypeDTO> AssetType { get; set; }
-        public IEnumerable<CurrencyDTO> Currency { get; set; }
-        public IEnumerable<UnitDTO> Unit { get; set; }
-
     }
 }

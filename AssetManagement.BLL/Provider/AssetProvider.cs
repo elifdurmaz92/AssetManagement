@@ -13,7 +13,7 @@ namespace AssetManagement.BLL.Provider
             _client = client;
         }
 
-        public void AddAsset()
+        public void AddNewAsset()
         {
 
 

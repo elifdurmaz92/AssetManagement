@@ -110,11 +110,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset">Ürünün Güncel Fiyatı</label>
-                                        <input type="text" asp-for="@Model.AssetPrice.Price" class="form-control">
+                                        <input type="text" asp-for="@Model.AssetPrice" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset">Ürünün Güncel Fiyat Para Birimi</label>
-                                        <select asp-for="@Model.AssetPrice.CurrencyID" asp-items="@(new SelectList(Model.Currency, "ID","Description"))" class="form-control">
+                                        <select asp-for="@Model.AssetPriceCurrencyID" asp-items="@(new SelectList(Model.Currency, "ID","Description"))" class="form-control">
                                             <option value="">Seçiniz</option>
                                         </select>
                                     </div>

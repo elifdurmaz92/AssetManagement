@@ -18,7 +18,7 @@ namespace AssetManagement.API.Controllers
         }
 
         //[HttpPost("~/api/addasset")]
-        //public IActionResult Post([FromBody] Asset entity)
+        //public IActionResult Post([FromBody] AddNewAssetDTO entity)
         //{
 
         //}

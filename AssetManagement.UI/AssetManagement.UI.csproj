@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AssetManagement.BLL\AssetManagement.BLL.csproj" />
     <ProjectReference Include="..\AssetManagement.DTO\AssetManagement.DTO.csproj" />
   </ItemGroup>
