@@ -1,3 +1,4 @@
+using AssetManagement.BLL.Provider;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +24,12 @@ namespace AssetManagement.UI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddHttpClient<NewAssetProvider>(options =>
+            {
+                options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

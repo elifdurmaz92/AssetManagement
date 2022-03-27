@@ -17,10 +17,10 @@ namespace AssetManagement.API.Controllers
 
         }
 
-        [HttpPost("~/api/addasset")]
-        public IActionResult Post([FromBody] Asset entity)
-        {
+        //[HttpPost("~/api/addasset")]
+        //public IActionResult Post([FromBody] Asset entity)
+        //{
 
-        }
+        //}
     }
 }

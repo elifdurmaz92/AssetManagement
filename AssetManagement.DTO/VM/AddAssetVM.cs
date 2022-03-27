@@ -1,11 +1,10 @@
 ﻿using AssetManagement.DTO.DTO;
-using AssetManagement.UI.Models.Enum;
+using AssetManagement.DTO.Enum;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace AssetManagement.UI.Models
+namespace AssetManagement.DTO.VM
 {
     public class AddAssetVM
     {
@@ -28,13 +27,14 @@ namespace AssetManagement.UI.Models
         public decimal Quantity { get; set; }
         public int UnitID { get; set; }
 
-        List<AssetGroupDTO> Group { get; set; }
-        List<AssetTypeDTO> AssetType { get; set; }
-        List<AssetBrandDTO> Brand { get; set; }
-        List<AssetModelDTO> Model { get; set; }
-        List<CurrencyDTO> Currency { get; set; }
-        List<UnitDTO> Unit { get; set; }
-        GuaranteeEnum IsGuarantee { get; set; }
+        public AssetPriceDTO AssetPrice { get; set; }
+        public IEnumerable<AssetGroupDTO> Group { get; set; }
+        public IEnumerable<AssetTypeDTO> AssetType { get; set; }
+        public IEnumerable<AssetBrandDTO> Brand { get; set; }
+        public IEnumerable<AssetModelDTO> Model { get; set; }
+        public IEnumerable<CurrencyDTO> Currency { get; set; }
+        public IEnumerable<UnitDTO> Unit { get; set; }
+        public GuaranteeEnum IsGuarantee { get; set; }
 
     }
 }

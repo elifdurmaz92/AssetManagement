@@ -4,11 +4,11 @@ using System.Text;
 
 namespace AssetManagement.DTO.DTO
 {
-    public class PriceDAL
+    public class PriceDTO
     {
         public int ID { get; set; }
         public int AssetID { get; set; }
-        public decimal Price1 { get; set; }
+        public decimal Price { get; set; }
         public int CurrencyID { get; set; }
         public DateTime Date { get; set; }
         public DateTime CreatedDate { get; set; }

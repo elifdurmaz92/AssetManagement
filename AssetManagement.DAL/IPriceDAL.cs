@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AssetManagement.DAL
 {
-    public interface IPriceDAL: IEntityRepository<Price>
+    public interface IPriceDAL: IEntityRepository<AssetPrice>
     {
     }
 }

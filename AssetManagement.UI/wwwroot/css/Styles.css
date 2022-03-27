@@ -12367,6 +12367,19 @@ body {
     margin-left: 15px;
     margin-right: 15px;
 }
+
+
+#AssetWithoutBarcodeDiv {
+    pointer-events: auto;
+    opacity: 1;
+}
+#AssetBarcodeInput {
+    pointer-events: none;
+    opacity: 0.8;
+    background-color: #E5E7E9;
+}
+
+
 /*#region checkbox */
 .switch {
     position: relative;

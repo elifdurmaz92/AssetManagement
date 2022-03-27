@@ -6,5 +6,10 @@ namespace AssetManagement.BLL.Provider
 {
     public class AssetProvider
     {
+
+        public AssetProvider()
+        {
+
+        }
     }
 }

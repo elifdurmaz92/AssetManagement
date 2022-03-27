@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AssetManagement.DAL
 {
-    public class PriceDAL: EfRepoBase<Price, AssetManagementContext>, IPriceDAL
+    public class PriceDAL: EfRepoBase<AssetPrice, AssetManagementContext>, IPriceDAL
     {
     }
 }

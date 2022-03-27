@@ -17,6 +17,6 @@ namespace AssetManagement.Core.Entity
         public bool? IsActive { get; set; }
 
         public virtual ICollection<Asset> Asset { get; set; }
-        public virtual ICollection<Price> Price { get; set; }
+        public virtual ICollection<AssetPrice> AssetPrice { get; set; }
     }
 }

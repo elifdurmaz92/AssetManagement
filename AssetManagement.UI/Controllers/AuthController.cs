@@ -1,4 +1,4 @@
-﻿using AssetManagement.UI.Models;
+﻿using AssetManagement.DTO.VM;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

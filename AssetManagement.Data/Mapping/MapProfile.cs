@@ -38,8 +38,8 @@ namespace AssetManagement.Data.Mapping
             CreateMap<AssetBarcode, AssetBarcodeDTO>();
             CreateMap<AssetBarcodeDTO, AssetBarcode>();
 
-            CreateMap<Price, PriceDAL>();
-            CreateMap<PriceDAL, Price>();
+            CreateMap<AssetPrice, AssetPriceDTO>();
+            CreateMap<AssetPriceDTO, AssetPrice>();
 
             CreateMap<AssetDocument, AssetDocumentDTO>();
             CreateMap<AssetDocumentDTO, AssetDocument>();

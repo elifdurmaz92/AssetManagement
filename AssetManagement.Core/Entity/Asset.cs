@@ -54,6 +54,6 @@ namespace AssetManagement.Core.Entity
         public virtual ICollection<AssetWithoutBarcode> AssetWithoutBarcode { get; set; }
         public virtual ICollection<Comment> Comment { get; set; }
         public virtual ICollection<AssetDocument> AssetDocument { get; set; }
-        public virtual ICollection<Price> Price { get; set; }
+        public virtual ICollection<AssetPrice> AssetPrice { get; set; }
     }
 }
