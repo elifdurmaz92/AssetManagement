@@ -28,6 +28,30 @@ namespace AssetManagement.BLL.Provider
             }
             return null;
         }
+
+        public async Task<IEnumerable<AssetBrandDTO>> GetBrandByType(int assetTypeID)
+        {
+            var getBrand = await _client.GetAsync("getBrandByAssetType/"+ assetTypeID);
+            if (getBrand.IsSuccessStatusCode)
+            {
+                var read = await getBrand.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<IEnumerable<AssetBrandDTO>>(read);
+                return result;
+            }
+            return null;
+        }
+        public async Task<IEnumerable<AssetModelDTO>> GetModelByBrand(int assetBrandID)
+        {
+            var getBrand = await _client.GetAsync("getModelByBrand/" + assetBrandID);
+            if (getBrand.IsSuccessStatusCode)
+            {
+                var read = await getBrand.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<IEnumerable<AssetModelDTO>>(read);
+                return result;
+            }
+            return null;
+        }
+
         public async Task<IEnumerable<CurrencyDTO>> GetCurrency()
         {
             var getCurrency = await _client.GetAsync("currency");
@@ -65,8 +89,6 @@ namespace AssetManagement.BLL.Provider
             }
             return null;
         }
-
-
 
 
     }

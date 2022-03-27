@@ -22,9 +22,32 @@ namespace AssetManagement.API.Controllers
         [HttpGet("")]
         public async Task<IActionResult> GetAllAsync()
         {
-            var veri = await _dal.GetAllAsync();
+            try
+            {
+                var veri = await _dal.GetAllAsync();
 
-            return Ok(veri);
+                return Ok(veri);
+            }
+            catch (Exception exc)
+            {
+                return BadRequest(exc);
+            }
+
+        }
+
+        [HttpGet("~/api/getBrandByAssetType/{assetTypeID}")]
+        public IActionResult GetAllBrandByAssetType(int assetTypeID)
+        {
+            try
+            {
+                var veri = _dal.GetAll(x => x.AssetTypeID == assetTypeID);
+
+                return Ok(veri);
+            }
+            catch (Exception exc)
+            {
+                return BadRequest(exc);
+            }
 
         }
         [HttpPost]
@@ -38,8 +61,8 @@ namespace AssetManagement.API.Controllers
             }
             catch (Exception exc)
             {
-            }
-            return BadRequest();
+                return BadRequest(exc);
+            }   
 
         }
 
@@ -52,10 +75,11 @@ namespace AssetManagement.API.Controllers
                 _dal.Update(entity);
                 return new StatusCodeResult(200);
             }
-            catch (Exception)
+            catch (Exception exc)
             {
+                return BadRequest(exc);
             }
-            return BadRequest();
+
 
         }
     }

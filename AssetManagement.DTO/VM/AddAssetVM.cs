@@ -24,17 +24,14 @@ namespace AssetManagement.DTO.VM
         public DateTime RetireDate { get; set; }
 
         public string Barcode { get; set; }
-        public decimal Quantity { get; set; }
-        public int UnitID { get; set; }
+        public decimal? Quantity { get; set; }
+        public int? UnitID { get; set; }
 
         public AssetPriceDTO AssetPrice { get; set; }
         public IEnumerable<AssetGroupDTO> Group { get; set; }
         public IEnumerable<AssetTypeDTO> AssetType { get; set; }
-        public IEnumerable<AssetBrandDTO> Brand { get; set; }
-        public IEnumerable<AssetModelDTO> Model { get; set; }
         public IEnumerable<CurrencyDTO> Currency { get; set; }
         public IEnumerable<UnitDTO> Unit { get; set; }
-        public GuaranteeEnum IsGuarantee { get; set; }
 
     }
 }

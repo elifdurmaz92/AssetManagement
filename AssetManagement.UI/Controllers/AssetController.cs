@@ -2,9 +2,12 @@
 using AssetManagement.DTO.DTO;
 using AssetManagement.DTO.VM;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace AssetManagement.UI.Controllers
@@ -27,22 +30,48 @@ namespace AssetManagement.UI.Controllers
             AddAssetVM addAssetVM = new AddAssetVM()
             {
                 Group = await _pro.GetGroup(),
-                Currency=await _pro.GetCurrency(),
-                Unit=await _pro.GetUnit(),
-                AssetType=await _pro.GetAssetType(),
+                Currency = await _pro.GetCurrency(),
+                Unit = await _pro.GetUnit(),
+                AssetType = await _pro.GetAssetType(),
 
             };
             return View(addAssetVM);
         }
 
-        public IActionResult Index()
+        /// <summary>
+        /// Varlık tipine göre Markaları getirir
+        /// </summary>
+        /// <param name="assetTypeID"></param>
+        /// <returns></returns>
+        public async Task<JsonResult> GetBrandByAssetType(int assetTypeID)
         {
-            return View();
+            var getBrand = await _pro.GetBrandByType(assetTypeID);
+
+            return Json(getBrand);
         }
 
-        [HttpPost]
-        public IActionResult AssetAdd()
+        /// <summary>
+        /// Varlık Markasına göre modelleri getirir
+        /// </summary>
+        /// <param name="assetBrandID"></param>
+        /// <returns></returns>
+        public async Task<JsonResult> GetModelByAssetType(int assetBrandID)
         {
+            var getModel = await _pro.GetModelByBrand(assetBrandID);
+
+            return Json(getModel);
+        }
+        
+
+        [HttpPost]
+        public IActionResult AssetAdd(AddAssetVM assetVM)
+        {
+            if (assetVM.IsBarcode==true)
+            {
+
+
+            }
+            var deger = assetVM;
             return View("Add");
         }
     }

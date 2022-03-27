@@ -1,4 +1,5 @@
 ﻿@model AddAssetVM
+@using AssetManagement.DTO.Enum
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
 
@@ -42,8 +43,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
 
                                     <div class="form-group">
@@ -63,30 +62,31 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Ürün Tipi</label>
-                                        <select asp-for="AssetTypeID" asp-items="@(new SelectList(Model.AssetType))" class="form-control" id="assetTypeSelectID">
+                                        <select asp-for="AssetTypeID" asp-items="@(new SelectList(Model.AssetType, "ID","Description"))" class="form-control" id="assetTypeSelectID">
                                             <option value="">Seçiniz</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Marka</label>
-                                        <select asp-for="AssetBrandID" asp-items="@(new SelectList(Model.Brand))" class="form-control" id="brandSelectID">
+                                        <select asp-for="AssetBrandID" asp-items="@(new List<SelectListItem>())" class="form-control" id="brandSelectID">
                                             <option value="">Seçiniz</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Model</label>
-                                        @*@Html.DropDownListFor(a => a.OrderDetail.ProductID, Model.Products, "Seçiniz", new { @id = "productID",@class= "form-control" })*@
+                                        <select asp-for="AssetModelID" asp-items="@(new List<SelectListItem>())" class="form-control" id="modelSelectID">
+                                            <option value="">Seçiniz</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset">Garantili mi</label>
-                                        <select asp-for="Guarantee" asp-items="@(new SelectList(Model.IsGuarantee.ToString()))" class="form-control">
+                                        <select asp-for="Guarantee" asp-items="Html.GetEnumSelectList<GuaranteeEnum>()" class="form-control">
                                             <option value="">Seçiniz</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Açıklama</label>
                                         <textarea class="form-control" asp-for="Description" rows="3"></textarea>
-
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -94,7 +94,7 @@
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Ürün Giriş Tarihi</label>
                                         <input type="datetime-local" asp-for="EntryDate" class="form-control">
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" style="pointer-events: none; opacity: 0.8;">
                                         <label class="lbl-asset">Ürün Emeklilik Tarihi</label>
                                         <input type="datetime-local" asp-for="RetireDate" class="form-control">
                                     </div>
@@ -156,20 +156,27 @@
             }
         });
 
-        //Varlık Tipine göre Marka getir (Cascading olarak geçer)
-        $("#assetTypeSelectID").click(function () {
+        /*    Varlık Tipine göre Marka getir (Cascading olarak geçer)*/
+        $("#assetTypeSelectID").change(function () {
+            var assetTypeSelectID = $('select#assetTypeSelectID option:selected').val();
             $.ajax({
-                url: "/Test/ProductMailAt",
-                dataType: "json",
-                contentType: "application/json;charset=utf-8",
-                type: "get",
+                url: "/Asset/GetBrandByAssetType",
+                data: { assetTypeID: assetTypeSelectID },
                 success: function (data) {
                     console.log(data);
+                    $("#brandSelectID").empty();
+                    $("#brandSelectID").append($("<option></option>").attr("value", "").text("Seçiniz"));
                     $.each(data, function (index, val) {
-
-
+                        if (index == 0) {
+                            $("#brandSelectID").append($("<option></option>")
+                                .attr("selected", "selected")
+                                .attr("value", val.id)
+                                .text(val.description));
+                        }
+                        else {
+                            $("#brandSelectID").append($("<option></option>").attr("value", val.id).text(val.description));
+                        }
                     });
-
                 },
                 failure: function (data) {
                     alert(data);
@@ -179,7 +186,42 @@
                 }
             });
 
+        });
+
+        /*    Varlık Markaya göre model getir (Cascading olarak geçer)*/
+        $("#brandSelectID").change(function () {
+            var assetBrandSelectID = $('select#brandSelectID option:selected').val();
+            $.ajax({
+                url: "/Asset/GetModelByAssetType",
+                data: { assetBrandID: assetBrandSelectID },
+                success: function (data) {
+                    console.log(data);
+                    $("#modelSelectID").empty();
+                    $("#modelSelectID").append($("<option></option>").attr("value", "").text("Seçiniz"));
+                    $.each(data, function (index, val) {
+                        if (index == 0) {
+                            $("#modelSelectID").append($("<option></option>")
+                                .attr("selected", "selected")
+                                .attr("value", val.id)
+                                .text(val.description));
+                        }
+                        else {
+                            $("#modelSelectID").append($("<option></option>").attr("value", val.id).text(val.description));
+                        }
+                    });
+                },
+                failure: function (data) {
+                    alert(data);
+                },
+                error: function (cevap) {
+                    alert(cevap);
+                }
+            });
+
+        });
 
     });
+
+
 </script>
 

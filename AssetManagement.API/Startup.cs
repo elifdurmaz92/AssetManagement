@@ -54,6 +54,7 @@ namespace AssetManagement.API
             #endregion
 
             #region DAL
+
             services.AddScoped<IAuthRepo, AuthRepo>();
             services.AddScoped<IAuthDAL, AuthDAL>();
             services.AddScoped<IAssetTypeDAL, AssetTypeDAL>();
@@ -62,6 +63,7 @@ namespace AssetManagement.API
             services.AddScoped<IAssetModelDAL, AssetModelDAL>();
             services.AddScoped<ICurrencyDAL, CurrencyDAL>();
             services.AddScoped<IUnitDAL, UnitDAL>();
+            services.AddScoped<IPriceDAL, PriceDAL>();
 
 
             #endregion
