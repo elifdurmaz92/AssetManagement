@@ -72,6 +72,10 @@ namespace AssetManagement.UI.Controllers
 
 
             }
+            else
+            {
+
+            }
             var deger = assetVM;
             return View("Add");
         }

@@ -26,6 +26,7 @@ namespace AssetManagement.DTO.VM
         public string Barcode { get; set; }
         public decimal Quantity { get; set; }
         public int UnitID { get; set; }
+        public string FilePath { get; set; }
 
         public AssetPriceDTO AssetPrice { get; set; }
         public IEnumerable<AssetGroupDTO> Group { get; set; }
