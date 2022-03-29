@@ -1,4 +1,6 @@
 using AssetManagement.BLL.Provider;
+using AssetManagement.UI.Models.Mapping;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,9 +25,21 @@ namespace AssetManagement.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc(x=> {
+                x.EnableEndpointRouting = false;
+            }).SetCompatibilityVersion( Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
+
             services.AddControllersWithViews();
+            #region Auto Mapper Configurations
+
+            services.AddAutoMapper(typeof(Startup));
+            #endregion
 
             services.AddHttpClient<NewAssetProvider>(options =>
+            {
+                options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
+            });
+            services.AddHttpClient<AssetProvider>(options =>
             {
                 options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
             });
@@ -49,12 +63,23 @@ namespace AssetManagement.UI
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=Home}/{action=Index}/{id?}");
+            //});
+            app.UseMvc(routes =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                   name: "default",
+                   template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                  name: "areas",
+                  template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
             });
+
         }
     }
 }

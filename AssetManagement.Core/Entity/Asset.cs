@@ -19,7 +19,7 @@ namespace AssetManagement.Core.Entity
         public int CurrencyID { get; set; }
         public string Description { get; set; }
         public decimal? Cost { get; set; }
-        public bool? IsBarcode { get; set; }
+        public bool IsBarcode { get; set; }
         public bool? Guarantee { get; set; }
         public DateTime? EntryDate { get; set; }
         public DateTime? RetireDate { get; set; }

@@ -74,9 +74,8 @@ namespace AssetManagement.UI.Controllers
         [HttpPost]
         public IActionResult AssetAdd(AddAssetVM assetVM)
         {
-            _assetpro.AddNewAsset(_mapper.Map<AddNewAssetDTO>(assetVM));
+            var result=_assetpro.AddNewAsset(_mapper.Map<AddNewAssetDTO>(assetVM));
             
-            var deger = assetVM;
             return View("Add");
         }
     }

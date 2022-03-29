@@ -11,7 +11,7 @@ namespace AssetManagement.DTO.DTO
         public int PersonnelID { get; set; }
         public int StatusID { get; set; }
         public string Note { get; set; }
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public DateTime CreatedDate { get; set; }
         public int CreatedBy { get; set; }
         public DateTime ModifiedDate { get; set; }

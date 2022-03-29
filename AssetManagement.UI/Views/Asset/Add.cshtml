@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Ürün Grubu</label>
-                                        <select asp-for="@Model.GroupID" asp-items="@(new SelectList(Model.Group, "ID","Description"))" class="form-control">
+                                        <select asp-for="@Model.AssetGroupID" asp-items="@(new SelectList(Model.Group, "ID","Description"))" class="form-control">
                                             <option value="">Seçiniz</option>
                                         </select>
                                     </div>
@@ -133,7 +133,6 @@
                                 </div>
                             </div>
                         </form>
-
                     </div>
                 </div>
 

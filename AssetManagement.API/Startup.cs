@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -44,13 +44,14 @@ namespace AssetManagement.API
             });
 
             #region Auto Mapper Configurations
-            var mapperConfig = new MapperConfiguration(mc =>
-               {
-                   mc.AddProfile(new MapProfile());
-               });
+            //var mapperConfig = new MapperConfiguration(mc =>
+            //   {
+            //       mc.AddProfile(new MapProfile());
+            //   });
 
-            IMapper mapper = mapperConfig.CreateMapper();
-            services.AddSingleton(mapper);
+            //IMapper mapper = mapperConfig.CreateMapper();
+            //services.AddSingleton(mapper);
+            services.AddAutoMapper(typeof(Startup));
             #endregion
 
             #region DAL
