@@ -28,7 +28,7 @@ namespace AssetManagement.BLL.Provider
             return null;
         }
 
-        public async Task<string> AddGroup(AssetGroupDTO dto)
+        public async Task<string> AddGroup(AssetGroupDTO dto, string token = null)
         {
             //static tabloya çıkarburayı
             dto.CreatedBy = 1;
@@ -41,6 +41,7 @@ namespace AssetManagement.BLL.Provider
             string veri = "";
             try
             {
+                _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                 var groupPost = await _client.PostAsync("addassetgroup", group);
 
                 if (groupPost.IsSuccessStatusCode)
@@ -73,13 +74,14 @@ namespace AssetManagement.BLL.Provider
             return null;
         }
 
-        public async Task<string> UpdateGroup(AssetGroupDTO dto)
+        public async Task<string> UpdateGroup(AssetGroupDTO dto, string token = null)
         {
             var groupTrans = new StringContent(JsonConvert.SerializeObject(dto));
             groupTrans.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             string veri = "";
             try
             {
+                _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                 var updateGroup = await _client.PutAsync("updateassetgroup", groupTrans);
 
                 if (updateGroup.IsSuccessStatusCode)

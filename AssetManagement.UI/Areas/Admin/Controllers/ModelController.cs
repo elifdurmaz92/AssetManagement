@@ -10,20 +10,20 @@ using System.Threading.Tasks;
 namespace AssetManagement.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class BrandController : Controller
+    public class ModelController : Controller
     {
-        BrandProvider _pro;
-        AssetTypeProvider _typpro;
-        public BrandController(BrandProvider pro, AssetTypeProvider typepro)
+        AssetModelProvider _pro;
+        BrandProvider _brandpro;
+        public ModelController(AssetModelProvider pro,BrandProvider brandpro)
         {
             _pro = pro;
-            _typpro = typepro;
+            _brandpro = brandpro;
         }
         public async Task<IActionResult> Index()
         {
             try
             {
-                var result = await _pro.GetBrandList();
+                var result = await _pro.GetModelList();
                 if (result != null)
                 {
                     return View(result);
@@ -34,30 +34,29 @@ namespace AssetManagement.UI.Areas.Admin.Controllers
 
                 throw;
             }
-
-            return View(new AssetBrandVM());
+            return View(new AssetModelVM());
         }
 
         public async Task<IActionResult> Add()
         {
             try
             {
-                ViewBag.AssetType = await _typpro.GetAssetType();
-                return View(new AssetBrandDTO());
+                ViewBag.AssetBrand = await _brandpro.GetBrand();
+                return View(new AssetModelDTO());
             }
             catch (Exception)
             {
+
                 return RedirectToAction("Index");
-            }
-          
+            }        
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddBrand(AssetBrandDTO brand)
+        public async Task<IActionResult> AddModel(AssetModelDTO model)
         {
             try
             {
-                var result = await _pro.AddBrand(brand);
+                var result = await _pro.AddModel(model);
 
             }
             catch (Exception)
@@ -66,14 +65,15 @@ namespace AssetManagement.UI.Areas.Admin.Controllers
             }
             return View("Add");
         }
+
         public async Task<IActionResult> Update(int id)
         {
             try
             {
-                var result = await _pro.GetBrandByID(id);
-                if (result!=null)
+                var result = await _pro.GetModelByID(id);
+                if (result != null)
                 {
-                    ViewBag.AssetType= await _typpro.GetAssetType();
+                    ViewBag.AssetBrand = await _brandpro.GetBrand();
                     return View(result);
                 }
 
@@ -87,18 +87,18 @@ namespace AssetManagement.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateBrand(AssetBrandDTO brand)
+        public async Task<IActionResult> UpdateModel(AssetModelDTO model)
         {
             try
             {
-                var result = await _pro.UpdateBrand(brand);
+                var result = await _pro.UpdateModel(model);
 
             }
             catch (Exception)
             {
 
             }
-            return RedirectToAction("Update",brand.ID);
+            return RedirectToAction("Update", model.ID);
 
         }
 
@@ -116,6 +116,5 @@ namespace AssetManagement.UI.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
-
     }
 }

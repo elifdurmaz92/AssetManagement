@@ -79,7 +79,20 @@ namespace AssetManagement.BLL.Provider
             }
         }
 
-        public async Task<string> AddBrand(AssetBrandDTO dto)
+        public async Task<IEnumerable<AssetBrandVM>> GetBrand(string token = null)
+        {
+            _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var getbrand = await _client.GetAsync("assetbrand");
+            if (getbrand.IsSuccessStatusCode)
+            {
+                var read = await getbrand.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<IEnumerable<AssetBrandVM>>(read);
+                return result;
+            }
+            return null;
+        }
+
+        public async Task<string> AddBrand(AssetBrandDTO dto, string token = null)
         {
             //static tabloya çıkarburayı
             dto.CreatedBy = 1;
@@ -92,6 +105,7 @@ namespace AssetManagement.BLL.Provider
             string veri = "";
             try
             {
+                _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                 var brandPost = await _client.PostAsync("addassetbrand", brand);
 
                 if (brandPost.IsSuccessStatusCode)
@@ -109,8 +123,6 @@ namespace AssetManagement.BLL.Provider
             return veri;
         }
 
-
-
         public async Task<AssetBrandDTO> GetBrandByID(int id,string token = null)
         {
             _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
@@ -126,7 +138,6 @@ namespace AssetManagement.BLL.Provider
 
             return null;
         }
-
 
         public async Task<string> Delete(int id, string token = null)
         {
@@ -152,13 +163,14 @@ namespace AssetManagement.BLL.Provider
             }
         }
 
-        public async Task<string> UpdateBrand(AssetBrandDTO dto)
+        public async Task<string> UpdateBrand(AssetBrandDTO dto, string token = null)
         {
             var brandTrans = new StringContent(JsonConvert.SerializeObject(dto));
             brandTrans.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             string veri = "";
             try
             {
+                _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                 var updateBrand = await _client.PutAsync("updateassetbrand", brandTrans);
 
                 if (updateBrand.IsSuccessStatusCode)

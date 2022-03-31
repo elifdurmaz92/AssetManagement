@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <div class="animated fadeIn">
         <div class="row rowAsset">
-            <div class="col-12">
+            <div class="col-8">
                 <div class="card">
                     <div class="card-header">
                         <label style="font-weight: bold; color: #0a58ca;">Varlık Grubu Ekleme</label>
@@ -11,7 +11,7 @@
                     <div>
                         <form asp-action="AddAssetGroup" asp-controller="AssetGroup" asp-area="Admin" method="post">
                             <div class="row" style="padding: 40px;">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label>Açıklama</label>
                                         <input type="text" asp-for="@Model.Description" class="form-control">
@@ -20,10 +20,10 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <input type="submit" style=" width: 100%;" name="name" class="btn btn-primary" value="Kaydet" />
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <a class="btn btn-secondary" href="/admin/assetgroup/index">Sayfaya Dön</a>
                                     </div>
                                 </div>

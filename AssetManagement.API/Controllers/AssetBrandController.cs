@@ -111,8 +111,6 @@ namespace AssetManagement.API.Controllers
             {
                 return BadRequest(exc);
             }
-
-
         }
     }
 }
