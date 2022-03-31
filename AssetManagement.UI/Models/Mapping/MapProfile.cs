@@ -14,6 +14,7 @@ namespace AssetManagement.UI.Models.Mapping
         {
             CreateMap<AddNewAssetDTO, AddAssetVM>();
             CreateMap<AddAssetVM, AddNewAssetDTO>();
+
         }
     }
 }

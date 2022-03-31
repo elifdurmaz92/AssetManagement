@@ -27,8 +27,25 @@ namespace AssetManagement.API.Controllers
             return Ok(veri);
 
         }
+
+        [HttpGet("~/api/getgroupbyid/{groupID}")]
+        public IActionResult GetGroupByID(int groupID)
+        {
+            try
+            {
+                var veri = _dal.Get(x => x.ID == groupID);
+
+                return Ok(veri);
+            }
+            catch (Exception exc)
+            {
+                return BadRequest(exc);
+            }
+
+        }
+
         [HttpPost]
-        [Route("~/api/addAssetGroup")]
+        [Route("~/api/addassetgroup")]
         public IActionResult POST([FromBody] AssetGroup entity)
         {
             try
@@ -44,7 +61,7 @@ namespace AssetManagement.API.Controllers
         }
 
         [HttpPut]
-        [Route("~/api/updateAssetGroup")]
+        [Route("~/api/updateassetgroup")]
         public IActionResult PUT([FromBody] AssetGroup entity)
         {
             try
@@ -56,6 +73,23 @@ namespace AssetManagement.API.Controllers
             {
             }
             return BadRequest();
+
+        }
+
+        [HttpPut]
+        [Route("~/api/deleteassetgroup")]
+        public IActionResult DELETE([FromBody] AssetGroup entity)
+        {
+            try
+            {
+                _dal.SoftDelete(entity);
+                return new StatusCodeResult(200);
+            }
+            catch (Exception exc)
+            {
+                return BadRequest(exc);
+            }
+
 
         }
     }

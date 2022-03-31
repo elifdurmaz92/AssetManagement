@@ -1,4 +1,4 @@
-﻿@model AssetBrandDTO
+﻿@model AssetGroupDTO
 
 <div class="container-fluid">
     <div class="animated fadeIn">
@@ -6,18 +6,12 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <label style="font-weight: bold; color: #0a58ca;">Marka Ekleme</label>
+                        <label style="font-weight: bold; color: #0a58ca;">Varlık Grubu Düzenle</label>
                     </div>
                     <div>
-                        <form asp-action="AddBrand" asp-controller="Brand" asp-area="Admin" method="post">
+                        <form asp-action="UpdateGroup" asp-controller="AssetGroup" asp-area="Admin" method="post">
                             <div class="row" style="padding: 40px;">
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="lbl-asset"><label class="reqSpan">*</label> Asset Tipi </label>
-                                        <select asp-for="@Model.AssetTypeID" asp-items="@(new SelectList(ViewBag.AssetType,"ID","Description"))" class="form-control">
-                                            <option value="">Seçiniz</option>
-                                        </select>
-                                    </div>
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label>Açıklama</label>
                                         <input type="text" asp-for="@Model.Description" class="form-control">
@@ -30,7 +24,7 @@
                                         <input type="submit" style=" width: 100%;" name="name" class="btn btn-primary" value="Kaydet" />
                                     </div>
                                     <div class="col-md-3">
-                                        <a class="btn btn-secondary" href="/admin/brand/index">Sayfaya Dön</a>
+                                        <a class="btn btn-secondary" href="/admin/assetgroup/index">Sayfaya Dön</a>
                                     </div>
                                 </div>
                             </div>
@@ -42,3 +36,4 @@
         </div>
     </div>
 </div>
+

@@ -81,6 +81,7 @@ namespace AssetManagement.BLL.Provider
 
         public async Task<string> AddBrand(AssetBrandDTO dto)
         {
+            //static tabloya çıkarburayı
             dto.CreatedBy = 1;
             dto.CreatedDate = DateTime.Now;
             dto.ModifiedBy = 1;
@@ -151,29 +152,29 @@ namespace AssetManagement.BLL.Provider
             }
         }
 
-        //public async Task<string> Update(AssetBrandDTO dto)
-        //{
-        //    var deger = new StringContent(JsonConvert.SerializeObject(dto));
-        //    deger.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
-        //    string veri = "";
-        //    try
-        //    {
-        //        var donenPostDegeri = await _client.PutAsync("assetbrand/update", deger);
+        public async Task<string> UpdateBrand(AssetBrandDTO dto)
+        {
+            var brandTrans = new StringContent(JsonConvert.SerializeObject(dto));
+            brandTrans.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            string veri = "";
+            try
+            {
+                var updateBrand = await _client.PutAsync("updateassetbrand", brandTrans);
 
-        //        if (donenPostDegeri.IsSuccessStatusCode)
-        //        {
-        //            veri = await donenPostDegeri.Content.ReadAsStringAsync();
-        //        }
-        //        veri = "başarılı";
-        //    }
-        //    catch (Exception)
-        //    {
+                if (updateBrand.IsSuccessStatusCode)
+                {
+                    veri = await updateBrand.Content.ReadAsStringAsync();
+                }
+                veri = "başarılı";
+            }
+            catch (Exception)
+            {
 
-        //        throw;
-        //    }
+                throw;
+            }
 
-        //    return veri;
-        //}
+            return veri;
+        }
 
 
     }

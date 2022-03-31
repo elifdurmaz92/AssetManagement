@@ -1,6 +1,5 @@
 ﻿using AssetManagement.BLL.Provider;
 using AssetManagement.DTO.DTO;
-using AssetManagement.DTO.VM;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,20 +9,18 @@ using System.Threading.Tasks;
 namespace AssetManagement.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class BrandController : Controller
+    public class AssetGroupController : Controller
     {
-        BrandProvider _pro;
-        AssetTypeProvider _typpro;
-        public BrandController(BrandProvider pro, AssetTypeProvider typepro)
+        AssetGroupProvider _pro;
+        public AssetGroupController(AssetGroupProvider pro)
         {
             _pro = pro;
-            _typpro = typepro;
         }
         public async Task<IActionResult> Index()
         {
             try
             {
-                var result = await _pro.GetBrandList();
+                var result = await _pro.GetGroup();
                 if (result != null)
                 {
                     return View(result);
@@ -31,26 +28,23 @@ namespace AssetManagement.UI.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-
                 throw;
             }
 
-            return View(new AssetBrandVM());
+            return View(new AssetGroupDTO());
         }
 
-        public async Task<IActionResult> Add()
+        public IActionResult Add()
         {
-            ViewBag.AssetType = await _typpro.GetAssetType();
-            return View(new AssetBrandDTO());
+            return View(new AssetGroupDTO());
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddBrand(AssetBrandDTO brand)
+        public async Task<IActionResult> AddAssetGroup(AssetGroupDTO group)
         {
             try
             {
-                var result = await _pro.AddBrand(brand);
-
+                var result = await _pro.AddGroup(group);
             }
             catch (Exception)
             {
@@ -58,14 +52,14 @@ namespace AssetManagement.UI.Areas.Admin.Controllers
             }
             return View("Add");
         }
+
         public async Task<IActionResult> Update(int id)
         {
             try
             {
-                var result = await _pro.GetBrandByID(id);
-                if (result!=null)
+                var result = await _pro.GetGroupByID(id);
+                if (result != null)
                 {
-                    ViewBag.AssetType= await _typpro.GetAssetType();
                     return View(result);
                 }
 
@@ -79,20 +73,21 @@ namespace AssetManagement.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateBrand(AssetBrandDTO brand)
+        public async Task<IActionResult> UpdateGroup(AssetGroupDTO group)
         {
             try
             {
-                var result = await _pro.UpdateBrand(brand);
+                var result = await _pro.UpdateGroup(group);
 
             }
             catch (Exception)
             {
 
             }
-            return RedirectToAction("Update",brand.ID);
+            return RedirectToAction("Update", group.ID);
 
         }
+
 
         public async Task<IActionResult> Delete(int id)
         {
@@ -108,6 +103,5 @@ namespace AssetManagement.UI.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
-
     }
 }
