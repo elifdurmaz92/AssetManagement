@@ -45,5 +45,6 @@ namespace AssetManagement.Core.Context
         public DbSet<Status> Status { get; set; }
         public DbSet<Team> Team { get; set; }
         public DbSet<Unit> Unit { get; set; }
+        public DbSet<SystemLists> SystemLists { get; set; }
     }
 }

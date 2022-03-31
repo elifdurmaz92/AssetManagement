@@ -14,6 +14,7 @@ namespace AssetManagement.Data.Repository
         void Add(T entity);
         void Update(T entity);
         void Delete(T entity);
+        void SoftDelete(T entity);
         Task<IEnumerable<T>> GetAllAsync();
     }
 }

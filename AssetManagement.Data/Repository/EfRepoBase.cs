@@ -61,6 +61,12 @@ namespace AssetManagement.Data.Repository
             return entities;
         }
 
+        public void SoftDelete(TEntity entity)
+        {
+            entity.GetType().GetProperty("IsActive").SetValue(entity, false);
+            Update(entity);
+        }
+
         public void Update(TEntity entity)
         {
             using (var context = new Tcontext())

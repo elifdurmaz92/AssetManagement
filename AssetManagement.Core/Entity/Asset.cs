@@ -10,7 +10,7 @@ namespace AssetManagement.Core.Entity
     {
         [Key]
         public int ID { get; set; }
-        public string RegistrationNumber { get; set; }
+        public int? RegistrationNumber { get; set; }
         public int CompanyID { get; set; }
         public int AssetGroupID { get; set; }
         public int AssetTypeID { get; set; }
@@ -18,9 +18,9 @@ namespace AssetManagement.Core.Entity
         public int AssetModelID { get; set; }
         public int CurrencyID { get; set; }
         public string Description { get; set; }
-        public decimal? Cost { get; set; }
+        public decimal Cost { get; set; }
         public bool IsBarcode { get; set; }
-        public bool? Guarantee { get; set; }
+        public bool Guarantee { get; set; }
         public DateTime? EntryDate { get; set; }
         public DateTime? RetireDate { get; set; }
         public DateTime? CreatedDate { get; set; }

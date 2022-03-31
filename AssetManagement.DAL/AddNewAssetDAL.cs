@@ -35,7 +35,6 @@ namespace AssetManagement.DAL
             {
                 try
                 {
-
                     var asset = AddNewAssetDTOToAsset(newassetDTO);
 
                     _assetDAL.Add(asset);
@@ -93,6 +92,7 @@ namespace AssetManagement.DAL
                 AssetBrandID = newassetDTO.AssetBrandID,
                 AssetModelID = newassetDTO.AssetModelID,
                 CurrencyID = newassetDTO.CurrencyID,
+                AssetTypeID = newassetDTO.AssetTypeID,
                 Description = newassetDTO.Description,
                 Cost = newassetDTO.Cost,
                 IsBarcode = newassetDTO.IsBarcode,

@@ -25,9 +25,10 @@ namespace AssetManagement.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(x=> {
+            services.AddMvc(x =>
+            {
                 x.EnableEndpointRouting = false;
-            }).SetCompatibilityVersion( Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
+            }).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
 
             services.AddControllersWithViews();
             #region Auto Mapper Configurations
@@ -35,7 +36,28 @@ namespace AssetManagement.UI
             services.AddAutoMapper(typeof(Startup));
             #endregion
 
-            services.AddHttpClient<NewAssetProvider>(options =>
+            #region Provider 
+            services.AddHttpClient<AssetTypeProvider>(options =>
+             {
+                 options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
+             });
+            services.AddHttpClient<UnitProvider>(options =>
+            {
+                options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
+            });
+            services.AddHttpClient<CurrencyProvider>(options =>
+            {
+                options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
+            });
+            services.AddHttpClient<AssetModelProvider>(options =>
+            {
+                options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
+            });
+            services.AddHttpClient<BrandProvider>(options =>
+            {
+                options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
+            });
+            services.AddHttpClient<AssetGroupProvider>(options =>
             {
                 options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
             });
@@ -43,6 +65,11 @@ namespace AssetManagement.UI
             {
                 options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
             });
+            services.AddHttpClient<SystemListsProvider>(options =>
+            {
+                options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
+            });
+            #endregion
 
         }
 

@@ -15,13 +15,25 @@ namespace AssetManagement.UI.Controllers
 {
     public class AssetController : Controller
     {
-        NewAssetProvider _newAssetpro;
+        #region Fields
         AssetProvider _assetpro;
+        AssetTypeProvider _assetTypepro;
+        UnitProvider _unitpro;
+        CurrencyProvider _currencypro;
+        AssetModelProvider _modelpro;
+        BrandProvider _brandpro;
+        AssetGroupProvider _grouppro;
         IMapper _mapper;
-        public AssetController(NewAssetProvider newAssetpro, AssetProvider assetpro,IMapper mapper)
+        #endregion
+        public AssetController(AssetProvider assetpro, AssetTypeProvider assetTypepro, UnitProvider unitpro, CurrencyProvider currencypro, AssetModelProvider modelpro, BrandProvider brandpro, AssetGroupProvider grouppro, IMapper mapper)
         {
-            _newAssetpro = newAssetpro;
             _assetpro = assetpro;
+            _assetTypepro = assetTypepro;
+            _unitpro = unitpro;
+            _currencypro = currencypro;
+            _modelpro = modelpro;
+            _brandpro = brandpro;
+            _grouppro = grouppro;
             _mapper = mapper;
         }
 
@@ -38,10 +50,10 @@ namespace AssetManagement.UI.Controllers
         {
             AddAssetVM addAssetVM = new AddAssetVM()
             {
-                Group = await _newAssetpro.GetGroup(),
-                Currency = await _newAssetpro.GetCurrency(),
-                Unit = await _newAssetpro.GetUnit(),
-                AssetType = await _newAssetpro.GetAssetType(),
+                Group = await _grouppro.GetGroup(),
+                Currency = await _currencypro.GetCurrency(),
+                Unit = await _unitpro.GetUnit(),
+                AssetType = await _assetTypepro.GetAssetType(),
             };
             return View(addAssetVM);
         }
@@ -53,7 +65,7 @@ namespace AssetManagement.UI.Controllers
         /// <returns></returns>
         public async Task<JsonResult> GetBrandByAssetType(int assetTypeID)
         {
-            var getBrand = await _newAssetpro.GetBrandByType(assetTypeID);
+            var getBrand = await _brandpro.GetBrandByType(assetTypeID);
 
             return Json(getBrand);
         }
@@ -65,18 +77,18 @@ namespace AssetManagement.UI.Controllers
         /// <returns></returns>
         public async Task<JsonResult> GetModelByAssetType(int assetBrandID)
         {
-            var getModel = await _newAssetpro.GetModelByBrand(assetBrandID);
+            var getModel = await _modelpro.GetModelByBrand(assetBrandID);
 
             return Json(getModel);
         }
-        
+
 
         [HttpPost]
         public IActionResult AssetAdd(AddAssetVM assetVM)
         {
-            var result=_assetpro.AddNewAsset(_mapper.Map<AddNewAssetDTO>(assetVM));
-            
-            return View("Add");
+            var result = _assetpro.AddNewAsset(_mapper.Map<AddNewAssetDTO>(assetVM));
+
+            return RedirectToAction("Add");
         }
     }
 }

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<SystemListsDTO>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row rowAsset">
+            <div class="col-12">
+                <div class="container-fluid px-4">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Sistem Listeleri
+                        </div>
+                        <div class="card-body">
+                            <table id="datatablesSimple">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Proje</th>
+                                        <th>Kod</th>
+                                        <th>Açıklama</th>
+                                        <th>Detay</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th></th>
+                                            <th>@item.Project</th>
+                                            <td>@item.Code</td>
+                                            <td>@item.Description</td>
+                                            <td>
+                                                <a class="btn btn-outline-info" href="/@item.OperationController/@item.OperationAction"><i class="fa fa-bars"></i>
+                                                İşlem Listelerini Düzenle</a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

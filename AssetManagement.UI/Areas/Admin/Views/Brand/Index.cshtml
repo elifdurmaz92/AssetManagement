@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AssetBrandVM>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row rowAsset">
+            <div class="col-12">
+             
+                <div class="container-fluid px-4">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <div class="row">                          
+                                <div class="col-md-6">
+                                    <i class="fas fa-table me-1"></i>
+                                    Marka Sistem Listeleri
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="btn btn-success" style="float: right;" href="/admin/brand/add">Yeni Sistem Liste Ögesi</a>
+                                </div>
+                            </div>                       
+                        </div>
+                        <div class="card-body">
+                            <table id="datatablesSimple">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Varlık Tipi</th>
+                                        <th>Açıklama</th>
+                                        <th>Varsayılan mı?</th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td></td>
+                                            <td>@item.AssetType</td>
+                                            <td>@item.Description</td>
+                                            <td>@item.IsActive</td>
+                                             <td>
+                                                <a class="btn btn-outline-primary" href="/admin/brand/update/@item.ID">Güncelle</a>
+                                                <a class="btn btn-outline-danger" href="/admin/brand/delete/@item.ID">Sil</a>
+                                            </td>
+
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

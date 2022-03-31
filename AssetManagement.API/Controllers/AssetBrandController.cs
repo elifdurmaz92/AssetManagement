@@ -35,7 +35,7 @@ namespace AssetManagement.API.Controllers
 
         }
 
-        [HttpGet("~/api/getBrandByAssetType/{assetTypeID}")]
+        [HttpGet("~/api/getbrandbyassettype/{assetTypeID}")]
         public IActionResult GetAllBrandByAssetType(int assetTypeID)
         {
             try
@@ -50,8 +50,25 @@ namespace AssetManagement.API.Controllers
             }
 
         }
+
+        [HttpGet("~/api/getbrandbyid/{brandID}")]
+        public IActionResult GetBrandByID(int brandID)
+        {
+            try
+            {
+                var veri = _dal.Get(x => x.ID == brandID);
+
+                return Ok(veri);
+            }
+            catch (Exception exc)
+            {
+                return BadRequest(exc);
+            }
+
+        }
+
         [HttpPost]
-        [Route("~/api/addAssetBrand")]
+        [Route("~/api/addassetbrand")]
         public IActionResult POST([FromBody] AssetBrand entity)
         {
             try
@@ -67,12 +84,27 @@ namespace AssetManagement.API.Controllers
         }
 
         [HttpPut]
-        [Route("~/api/updateAssetBrand")]
+        [Route("~/api/updateassetbrand")]
         public IActionResult PUT([FromBody] AssetBrand entity)
         {
             try
             {
                 _dal.Update(entity);
+                return new StatusCodeResult(200);
+            }
+            catch (Exception exc)
+            {
+                return BadRequest(exc);
+            }
+        }
+
+        [HttpPut]
+        [Route("~/api/deleteassetbrand")]
+        public IActionResult DELETE([FromBody] AssetBrand entity)
+        {
+            try
+            {
+                _dal.SoftDelete(entity);
                 return new StatusCodeResult(200);
             }
             catch (Exception exc)

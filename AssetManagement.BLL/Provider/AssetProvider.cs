@@ -19,6 +19,7 @@ namespace AssetManagement.BLL.Provider
         public async Task<string> AddNewAsset(AddNewAssetDTO dto)
         {
             #region Login giriş Bilgileri gelecek
+            dto.CompanyID = 1;
             dto.PersonnelID = 1;
             dto.IsActive = true;
             dto.CreatedBy = 1;
@@ -26,15 +27,21 @@ namespace AssetManagement.BLL.Provider
             dto.StatusNote = "Yeni varlık eklendi";
             dto.CreatedDate = DateTime.Now;
             dto.ModifiedDate = DateTime.Now;
-            dto.ModifiedBy = 1; 
+            dto.ModifiedBy = 1;
             #endregion
+
+            if (dto.IsBarcode==true)
+            {
+                dto.Quantity = 0;
+                dto.UnitID = 0;
+            }
 
             var asset = new StringContent(JsonConvert.SerializeObject(dto));
             asset.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             string veri = "";
             try
             {
-                var result = await _client.PostAsync("addasset", asset);
+                var result = await _client.PostAsync("asset/addasset", asset);
                 if (result.IsSuccessStatusCode)
                 {
                     await result.Content.ReadAsStringAsync();

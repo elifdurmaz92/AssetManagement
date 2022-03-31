@@ -44,13 +44,6 @@ namespace AssetManagement.API
             });
 
             #region Auto Mapper Configurations
-            //var mapperConfig = new MapperConfiguration(mc =>
-            //   {
-            //       mc.AddProfile(new MapProfile());
-            //   });
-
-            //IMapper mapper = mapperConfig.CreateMapper();
-            //services.AddSingleton(mapper);
             services.AddAutoMapper(typeof(Startup));
             #endregion
 
@@ -62,15 +55,23 @@ namespace AssetManagement.API
             services.AddScoped<IAssetGroupDAL, AssetGroupDAL>();
             services.AddScoped<IAssetBrandDAL, AssetBrandDAL>();
             services.AddScoped<IAssetModelDAL, AssetModelDAL>();
-            services.AddScoped<ICurrencyDAL, CurrencyDAL>();
-            services.AddScoped<IUnitDAL, UnitDAL>();
-            services.AddScoped<IPriceDAL, PriceDAL>();
+            services.AddScoped<IAssetDAL, AssetDAL>();
             services.AddScoped<IAssetDAL, AssetDAL>();
             services.AddScoped<IAssetBarcodeDAL, AssetBarcodeDAL>();
             services.AddScoped<IAssetWithoutBarcodeDAL, AssetWithoutBarcodeDAL>();
             services.AddScoped<IAssetStatusDAL, AssetStatusDAL>();
             services.AddScoped<IAssetDocumentDAL, AssetDocumentDAL>();
             services.AddScoped<IAddNewAssetDAL, AddNewAssetDAL>();
+            services.AddScoped<ICompanyDAL, CompanyDAL>();
+            services.AddScoped<ICurrencyDAL, CurrencyDAL>();
+            services.AddScoped<ICustomerDAL, CustomerDAL>();
+            services.AddScoped<IPersonnelDAL, PersonnelDAL>();
+            services.AddScoped<IPriceDAL, PriceDAL>();
+            services.AddScoped<ISystemListsDAL, SystemListsDAL>();
+            services.AddScoped<IUnitDAL, UnitDAL>();
+
+
+
 
 
 
@@ -117,7 +118,8 @@ namespace AssetManagement.API
             app.UseRouting();
 
             app.UseCors();
-            app.UseCors(builder => builder.WithOrigins("http://localhost:25206").AllowAnyHeader());
+            
+            app.UseCors(builder => builder.WithOrigins(Configuration.GetSection("AppSettings:CorsConn").Value).AllowAnyHeader());
 
             app.UseAuthorization();
 
