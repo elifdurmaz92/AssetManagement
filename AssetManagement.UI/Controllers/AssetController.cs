@@ -48,14 +48,29 @@ namespace AssetManagement.UI.Controllers
         /// <returns></returns>
         public async Task<IActionResult> Add()
         {
-            AddAssetVM addAssetVM = new AddAssetVM()
+            try
             {
-                Group = await _grouppro.GetGroup(),
-                Currency = await _currencypro.GetCurrency(),
-                Unit = await _unitpro.GetUnit(),
-                AssetType = await _assetTypepro.GetAssetType(),
+                AddAssetVM addAssetVM = new AddAssetVM()
+                {
+                    Group = await _grouppro.GetGroup(),
+                    Currency = await _currencypro.GetCurrency(),
+                    Unit = await _unitpro.GetUnit(),
+                    AssetType = await _assetTypepro.GetAssetType(),
+                };
+                return View(addAssetVM);
+            }
+            catch (Exception)
+            {
+
+            }
+
+            AddAssetVM asset = new AddAssetVM() {
+                Group =new List<AssetGroupDTO>(),
+                Currency=new List<CurrencyDTO>(),
+                Unit=new List<UnitDTO>(),
+                AssetType=new List<AssetTypeDTO>()
             };
-            return View(addAssetVM);
+            return View(asset);
         }
 
         /// <summary>

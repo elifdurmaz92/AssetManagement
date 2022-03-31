@@ -18,11 +18,11 @@ a {
     border-color: #1861ac;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+/*.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff;
     background-color: #1b6ec2;
     border-color: #1861ac;
-}
+}*/
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -76,6 +76,8 @@ body {
 /*sonradan eklenenler*/
 
 
+/*#region AssetAdd */
+
 .rowAsset {
     padding: 2rem;
 }
@@ -107,6 +109,7 @@ body {
     border-radius: 10px;
     margin-left: 15px;
     margin-right: 15px;
+    margin-top:10%;
 }
 
 
@@ -120,6 +123,9 @@ body {
     opacity: 0.8;
     background-color: #E5E7E9;
 }
+
+/*#endregion */
+
 
 
 /*#region checkbox */
@@ -182,5 +188,65 @@ input[type="checkbox"]:checked + .slider:before {
     .slider.round:before {
         border-radius: 50%;
     }
+
+/*#endregion */
+
+
+/*#region Asset Management */
+.ul-menuAsset {
+    list-style: none;
+    margin-left: 10%;
+    display: inline-block !important;
+}
+
+.li-menuAsset {
+    display: inherit;
+    margin: 10px;
+    position: relative;
+}
+
+.a-menuAsset {
+    color: #8A9DAE !important;
+    font-size: 25px !important;
+    font-weight: 300;
+    border-bottom: 1px solid #f4f5f7;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    font-size: 30px;
+    font-weight: 700;
+    color: #1753C9 !important;
+    border-bottom: 1px solid #2DC8FF;
+    background-color: #F4F5F7;
+    border-color: white;
+}
+
+.asset-number {
+    font-size: 20px;
+    margin-left: 0%;
+    padding: 2px;
+    text-align: center;
+    padding-right: 9px;
+    padding-left: 9px;
+    border-radius: 100%;
+    color: #a7a9ac;
+    background: #f4f5f7;
+    border: 1px solid white;
+}
+
+
+.header-ul {
+    display: flex;
+    font-size: 16px;
+    list-style: none;
+}
+
+.header-li {
+    border: 2px solid #c6c6c7;
+    font-size: 20px;
+    padding: 2px;
+    border-radius: 5px;
+    color: #2DC8FF;
+}
 
 /*#endregion */

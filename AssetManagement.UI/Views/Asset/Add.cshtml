@@ -99,11 +99,11 @@
                                         <input type="datetime-local" asp-for="@Model.RetireDate" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label class="lbl-asset">Ürünün Maliyeti</label>
+                                        <label class="lbl-asset"><label class="reqSpan">*</label> Ürünün Maliyeti</label>
                                         <input type="text" asp-for="@Model.Cost" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label class="lbl-asset">Ürünün Para Birimi</label>
+                                        <label class="lbl-asset"><label class="reqSpan">*</label> Ürünün Para Birimi</label>
                                         <select asp-for="@Model.CurrencyID" asp-items="@(new SelectList(Model.Currency, "ID","Description"))" class="form-control">
                                             <option value="">Seçiniz</option>
                                         </select>
@@ -139,6 +139,7 @@
         </div>
     </div>
 </div>
+
 <script>
     $(document).ready(function () {
 
@@ -220,7 +221,6 @@
         });
 
     });
-
 
 </script>
 

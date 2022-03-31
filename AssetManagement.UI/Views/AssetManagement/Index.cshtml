@@ -1,0 +1,119 @@
+﻿<script src="~/lib/jquery/dist/jquery.js"></script>
+<style>
+
+</style>
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row rowAsset">
+            <div class="col-12">
+                <div style="padding:30px">
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <ul class="ul-menuAsset nav nav-pills flex-column" id="myTab" role="tablist">
+                                <li class="li-menuAsset nav-item ">
+                                    <a class="a-menuAsset nav-link active" id="assetMy-tab" data-toggle="tab" href="#assetMyList" role="tab" aria-controls="assetMyList" aria-selected="true">Varlıklarım<span class="asset-number ml-2">2</span> </a>
+                                </li>
+                                <li class="li-menuAsset nav-item">
+                                    <a class="a-menuAsset nav-link" id="assetTeam-tab" data-toggle="tab" href="#assetMyTeamList" role="tab" aria-controls="assetMyTeamList" aria-selected="false">Ekibimin Varlıları <span class="asset-number">0</span></a>
+                                </li>
+                                <li class="li-menuAsset nav-item">
+                                    <a class="a-menuAsset nav-link" id="allAsset-tab" data-toggle="tab" href="#allAsset" role="tab" aria-controls="allAsset" aria-selected="false">Tüm Varlıklar </a>
+                                </li>
+                                <li class="li-menuAsset">
+                                    <a class="a-menuAsset nav-link" id="alarm-tab" data-toggle="tab" href="#alarm" role="tab" aria-controls="alarm" aria-selected="false"> Alarm</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="assetMyList" role="tabpanel" aria-labelledby="assetMy-tab">
+                <div class="container-fluid px-4">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <ul class="header-ul mt-2">
+                                <li class="header-li">Kullanımda Olanlar <span class="tm-top-number" style=" font-size: 14px">305</span></li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <table id="datatablesSimple">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Proje</th>
+                                        <th>Kod</th>
+                                        <th>Açıklama</th>
+                                        <th>Detay</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="assetMyTeamList" role="tabpanel" aria-labelledby="aassetTeam-tab">
+
+            </div>
+            <div class="tab-pane fade show" id="allAsset" role="tabpanel" aria-labelledby="allAsset-tab">
+                <div class="container-fluid px-4">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <ul class="header-ul mt-2">
+                                <li class="header-li">Kullanımda Olanlar <span class="tm-top-number" style=" font-size: 14px">305</span></li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <table id="datatablesSimple">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Proje</th>
+                                        <th>Kod</th>
+                                        <th>Açıklama</th>
+                                        <th>Detay</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="tab-pane fade show" id="alarm" role="tabpanel" aria-labelledby="alarm-tab">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+
+    });
+</script>

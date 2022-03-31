@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AssetManagement.DTO.DTO;
+using AssetManagement.DTO.VM;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,15 @@ namespace AssetManagement.UI.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            AddAssetVM asset = new AddAssetVM()
+            {
+                Group = new List<AssetGroupDTO>(),
+                Currency = new List<CurrencyDTO>(),
+                Unit = new List<UnitDTO>(),
+                AssetType = new List<AssetTypeDTO>()
+            };
+            return View(asset);
+
         }
         /// <summary>
         /// Aksiyonlardan Depoya Ata Modal sayfasının açılması

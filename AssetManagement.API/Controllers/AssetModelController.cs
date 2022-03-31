@@ -1,5 +1,6 @@
 ﻿using AssetManagement.Core.Entity;
 using AssetManagement.DAL;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,7 +12,7 @@ namespace AssetManagement.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AssetModelController : ControllerBase
+     public class AssetModelController : ControllerBase
     {
         IAssetModelDAL _dal;
         public AssetModelController(IAssetModelDAL dal)
