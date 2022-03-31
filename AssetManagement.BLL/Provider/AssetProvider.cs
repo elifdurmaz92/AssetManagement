@@ -21,6 +21,7 @@ namespace AssetManagement.BLL.Provider
             #region Login giriş Bilgileri gelecek
             dto.CompanyID = 1;
             dto.PersonnelID = 1;
+            dto.StatusID = 1;
             dto.IsActive = true;
             dto.CreatedBy = 1;
             dto.Date = DateTime.Now;
@@ -41,7 +42,7 @@ namespace AssetManagement.BLL.Provider
             string veri = "";
             try
             {
-                var result = await _client.PostAsync("asset/addasset", asset);
+                var result = await _client.PostAsync("addasset", asset);
                 if (result.IsSuccessStatusCode)
                 {
                     await result.Content.ReadAsStringAsync();

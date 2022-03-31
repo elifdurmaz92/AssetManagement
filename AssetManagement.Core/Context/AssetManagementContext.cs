@@ -46,5 +46,12 @@ namespace AssetManagement.Core.Context
         public DbSet<Team> Team { get; set; }
         public DbSet<Unit> Unit { get; set; }
         public DbSet<SystemLists> SystemLists { get; set; }
+
+
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Asset>(x =>  x.Property(e => e.RegistrationNumber).ValueGeneratedOnAdd() );
+        //}
     }
 }

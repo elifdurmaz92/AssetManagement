@@ -7,7 +7,7 @@ namespace AssetManagement.DTO.DTO
     public class AddNewAssetDTO
     {
         public int ID { get; set; }
-        public int? RegistrationNumber { get; set; }
+        public int RegistrationNumber { get; set; }
         public int CompanyID { get; set; }
         public int AssetGroupID { get; set; }
         public int AssetTypeID { get; set; }
@@ -27,6 +27,7 @@ namespace AssetManagement.DTO.DTO
         //assetStatus
         public int PersonnelID { get; set; }
         public string StatusNote { get; set; }
+        public int StatusID { get; set; }
         public DateTime Date { get; set; }
 
         //barkodsuz

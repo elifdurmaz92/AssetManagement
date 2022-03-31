@@ -64,8 +64,6 @@ namespace AssetManagement.DAL
                     var assetStatus = AddNewAssetDTOToAssetStatus(newassetDTO, lastRecord);
                     _assetStatusDAL.Add(assetStatus);
 
-
-
                 }
                 catch (Exception)
                 {
@@ -75,7 +73,6 @@ namespace AssetManagement.DAL
 
                 scope.Complete();
             }
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -165,6 +162,7 @@ namespace AssetManagement.DAL
             {
                 AssetID = assetID,
                 PersonnelID = newassetDTO.PersonnelID,
+                StatusID=newassetDTO.StatusID,
                 Note = newassetDTO.StatusNote,
                 Date = newassetDTO.Date,
                 CreatedBy = newassetDTO.CreatedBy,

@@ -7,7 +7,7 @@ namespace AssetManagement.DTO.DTO
     public class AssetDTO
     {
         public int ID { get; set; }
-        public string RegistrationNumber { get; set; }
+        public int RegistrationNumber { get; set; }
         public int CompanyID { get; set; }
         public int AssetGroupID { get; set; }
         public int AssetTypeID { get; set; }

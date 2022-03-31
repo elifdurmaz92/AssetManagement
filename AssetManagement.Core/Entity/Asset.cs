@@ -10,7 +10,7 @@ namespace AssetManagement.Core.Entity
     {
         [Key]
         public int ID { get; set; }
-        public int? RegistrationNumber { get; set; }
+        public int RegistrationNumber { get; set; }
         public int CompanyID { get; set; }
         public int AssetGroupID { get; set; }
         public int AssetTypeID { get; set; }

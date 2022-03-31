@@ -18,7 +18,7 @@ namespace AssetManagement.BLL.Provider
         }
         public async Task<IEnumerable<UnitDTO>> GetUnit(string token = null)
         {
-            _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            //_client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             var getUnit = await _client.GetAsync("unit");
 
             if (getUnit.IsSuccessStatusCode)
