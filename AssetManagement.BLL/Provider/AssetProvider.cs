@@ -58,5 +58,17 @@ namespace AssetManagement.BLL.Provider
         }
 
 
+        public async Task<NewAssetDTO> NewAssetGET(string token = null)
+        {
+            _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var getNewAsset = await _client.GetAsync("asset/newasset");
+            if (getNewAsset.IsSuccessStatusCode)
+            {
+                var read = await getNewAsset.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<NewAssetDTO>(read);
+                return result;
+            }
+            return null;
+        }
     }
 }

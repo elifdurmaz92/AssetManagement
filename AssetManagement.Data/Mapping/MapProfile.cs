@@ -14,8 +14,8 @@ namespace AssetManagement.Data.Mapping
             CreateMap<AssetType, AssetTypeDTO>();
             CreateMap<AssetTypeDTO, AssetType>();
 
-            CreateMap<AssetGroup, AssetGroupDTO>();
-            CreateMap<AssetGroupDTO, AssetGroup>();
+            CreateMap<AssetGroup, AssetGroupDTO>().ReverseMap();
+            CreateMap<AssetGroupDTO, AssetGroup>().ReverseMap();
 
             CreateMap<AssetBrand, AssetBrandDTO>();
             CreateMap<AssetBrandDTO, AssetBrand>();

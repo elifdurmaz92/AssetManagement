@@ -15,9 +15,11 @@ namespace AssetManagement.API.Controllers
     public class AssetController : ControllerBase
     {
         IAddNewAssetDAL _dal;
-        public AssetController(IAddNewAssetDAL dal)
+        INewAssetDAL _newAssetDAL;
+        public AssetController(IAddNewAssetDAL dal,INewAssetDAL newAssetDAL)
         {
             _dal = dal;
+            _newAssetDAL = newAssetDAL;
         }
 
         [HttpPost("~/api/addasset")]
@@ -27,6 +29,21 @@ namespace AssetManagement.API.Controllers
             {
                 _dal.AddNewAsset(asset);
                 return new StatusCodeResult(201);
+            }
+            catch (Exception exc)
+            {
+            }
+            return BadRequest();
+        }
+
+        [HttpGet("~/api/asset/newasset")]
+        public async Task<IActionResult> NewAssetGet()
+        {
+            try
+            {
+                var veri =await _newAssetDAL.NewGetAsset();
+
+                return Ok(veri);
             }
             catch (Exception exc)
             {

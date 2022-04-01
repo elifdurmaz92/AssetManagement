@@ -1,6 +1,5 @@
 ﻿using AssetManagement.Core.Entity;
 using AssetManagement.DAL;
-using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;

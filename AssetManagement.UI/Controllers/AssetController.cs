@@ -17,23 +17,19 @@ namespace AssetManagement.UI.Controllers
     {
         #region Fields
         AssetProvider _assetpro;
-        AssetTypeProvider _assetTypepro;
-        UnitProvider _unitpro;
-        CurrencyProvider _currencypro;
+        //AssetTypeProvider _assetTypepro;
+        //UnitProvider _unitpro;
+        //AssetGroupProvider _grouppro;
+        //CurrencyProvider _currencypro;
         AssetModelProvider _modelpro;
         BrandProvider _brandpro;
-        AssetGroupProvider _grouppro;
         IMapper _mapper;
         #endregion
-        public AssetController(AssetProvider assetpro, AssetTypeProvider assetTypepro, UnitProvider unitpro, CurrencyProvider currencypro, AssetModelProvider modelpro, BrandProvider brandpro, AssetGroupProvider grouppro, IMapper mapper)
+        public AssetController(AssetProvider assetpro, AssetModelProvider modelpro, BrandProvider brandpro, IMapper mapper)
         {
             _assetpro = assetpro;
-            _assetTypepro = assetTypepro;
-            _unitpro = unitpro;
-            _currencypro = currencypro;
             _modelpro = modelpro;
             _brandpro = brandpro;
-            _grouppro = grouppro;
             _mapper = mapper;
         }
 
@@ -50,12 +46,14 @@ namespace AssetManagement.UI.Controllers
         {
             try
             {
+                var value = await _assetpro.NewAssetGET();
+
                 AddAssetVM addAssetVM = new AddAssetVM()
                 {
-                    Group = await _grouppro.GetGroup(),
-                    Currency = await _currencypro.GetCurrency(),
-                    Unit = await _unitpro.GetUnit(),
-                    AssetType = await _assetTypepro.GetAssetType(),
+                    Group = value.Group,
+                    Currency = value.Currency,
+                    Unit = value.Unit,
+                    AssetType = value.AssetType,
                 };
                 return View(addAssetVM);
             }

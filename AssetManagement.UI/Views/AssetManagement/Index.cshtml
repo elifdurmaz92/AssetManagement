@@ -1,7 +1,5 @@
 ﻿<script src="~/lib/jquery/dist/jquery.js"></script>
-<style>
 
-</style>
 
 <div class="container-fluid">
     <div class="animated fadeIn">
@@ -31,79 +29,14 @@
         </div>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="assetMyList" role="tabpanel" aria-labelledby="assetMy-tab">
-                <div class="container-fluid px-4">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <ul class="header-ul mt-2">
-                                <li class="header-li">Kullanımda Olanlar <span class="tm-top-number" style=" font-size: 14px">305</span></li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <table id="datatablesSimple">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Proje</th>
-                                        <th>Kod</th>
-                                        <th>Açıklama</th>
-                                        <th>Detay</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
 
-                                    <tr>
-                                        <th></th>
-                                        <th></th>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                </div>
+                @await Component.InvokeAsync("TeamAssetList")
             </div>
             <div class="tab-pane fade show" id="assetMyTeamList" role="tabpanel" aria-labelledby="aassetTeam-tab">
-
+                @await Component.InvokeAsync("PersonnelAssetList")
             </div>
             <div class="tab-pane fade show" id="allAsset" role="tabpanel" aria-labelledby="allAsset-tab">
-                <div class="container-fluid px-4">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <ul class="header-ul mt-2">
-                                <li class="header-li">Kullanımda Olanlar <span class="tm-top-number" style=" font-size: 14px">305</span></li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <table id="datatablesSimple">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Proje</th>
-                                        <th>Kod</th>
-                                        <th>Açıklama</th>
-                                        <th>Detay</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <tr>
-                                        <th></th>
-                                        <th></th>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                </div>
+                @await Component.InvokeAsync("AllAssetList")
             </div>
 
             <div class="tab-pane fade show" id="alarm" role="tabpanel" aria-labelledby="alarm-tab">

@@ -44,7 +44,15 @@ namespace AssetManagement.API
             });
 
             #region Auto Mapper Configurations
-            services.AddAutoMapper(typeof(Startup));
+            //services.AddAutoMapper(typeof(Startup));
+            //Bunu yapmamın sebebi mapping işlemini katmanda yaptığımdan yakalamam gerek map clasını
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MapProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
             #endregion
 
             #region DAL
@@ -69,11 +77,7 @@ namespace AssetManagement.API
             services.AddScoped<IPriceDAL, PriceDAL>();
             services.AddScoped<ISystemListsDAL, SystemListsDAL>();
             services.AddScoped<IUnitDAL, UnitDAL>();
-
-
-
-
-
+            services.AddScoped<INewAssetDAL, NewAssetDAL>();
 
             #endregion
 

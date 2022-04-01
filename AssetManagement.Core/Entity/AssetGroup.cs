@@ -14,7 +14,7 @@ namespace AssetManagement.Core.Entity
         public int? CreatedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public int? ModifiedBy { get; set; }
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
         public virtual ICollection<Asset> Asset { get; set; }
     }
 }
