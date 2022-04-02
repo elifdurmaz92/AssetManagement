@@ -14,8 +14,8 @@ namespace AssetManagement.API.Controllers
     [ApiController]
     public class AssetController : ControllerBase
     {
-        IAddNewAssetDAL _dal;
-        INewAssetDAL _newAssetDAL;
+        private readonly IAddNewAssetDAL _dal;
+        private readonly INewAssetDAL _newAssetDAL;
         public AssetController(IAddNewAssetDAL dal,INewAssetDAL newAssetDAL)
         {
             _dal = dal;

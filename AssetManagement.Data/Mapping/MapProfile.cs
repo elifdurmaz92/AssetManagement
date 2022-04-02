@@ -49,6 +49,9 @@ namespace AssetManagement.Data.Mapping
 
             CreateMap<SystemLists, SystemListsDTO>();
             CreateMap<SystemListsDTO, SystemLists>();
+
+            CreateMap<WarehouseAllAssetList, AssetListDTO>();
+            CreateMap<AssetListDTO, WarehouseAllAssetList>();
         }
     }
 }

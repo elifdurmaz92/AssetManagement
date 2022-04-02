@@ -50,7 +50,6 @@ namespace AssetManagement.API
             {
                 mc.AddProfile(new MapProfile());
             });
-
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
             #endregion
@@ -78,7 +77,7 @@ namespace AssetManagement.API
             services.AddScoped<ISystemListsDAL, SystemListsDAL>();
             services.AddScoped<IUnitDAL, UnitDAL>();
             services.AddScoped<INewAssetDAL, NewAssetDAL>();
-
+            services.AddScoped<IWarehouseManagementDAL, WarehouseManagementDAL>();
             #endregion
 
 

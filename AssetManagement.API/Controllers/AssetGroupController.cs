@@ -13,7 +13,7 @@ namespace AssetManagement.API.Controllers
     [ApiController]
     public class AssetGroupController : ControllerBase
     {
-        IAssetGroupDAL _dal;
+        private readonly IAssetGroupDAL _dal;
         public AssetGroupController(IAssetGroupDAL dal)
         {
             _dal = dal;

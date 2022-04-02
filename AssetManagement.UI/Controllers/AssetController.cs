@@ -16,14 +16,10 @@ namespace AssetManagement.UI.Controllers
     public class AssetController : Controller
     {
         #region Fields
-        AssetProvider _assetpro;
-        //AssetTypeProvider _assetTypepro;
-        //UnitProvider _unitpro;
-        //AssetGroupProvider _grouppro;
-        //CurrencyProvider _currencypro;
-        AssetModelProvider _modelpro;
-        BrandProvider _brandpro;
-        IMapper _mapper;
+        private readonly AssetProvider _assetpro;
+        private readonly AssetModelProvider _modelpro;
+        private readonly BrandProvider _brandpro;
+        private readonly IMapper _mapper;
         #endregion
         public AssetController(AssetProvider assetpro, AssetModelProvider modelpro, BrandProvider brandpro, IMapper mapper)
         {
@@ -100,7 +96,7 @@ namespace AssetManagement.UI.Controllers
         public IActionResult AssetAdd(AddAssetVM assetVM)
         {
             var result = _assetpro.AddNewAsset(_mapper.Map<AddNewAssetDTO>(assetVM));
-
+            ViewBag.mesaj = result;
             return RedirectToAction("Add");
         }
     }

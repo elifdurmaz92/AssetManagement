@@ -33,21 +33,31 @@ namespace AssetManagement.Data.Repository
             }
         }
 
+        public async Task<IEnumerable<TEntity>> ExecuteSqlQueryOrProcedure(string Query)
+        {
+            List<TEntity> list;
+            using (var context = new Tcontext())
+            {
+                list = await context.Set<TEntity>().FromSqlRaw(Query).ToListAsync();
+                return list;
+            }
+        }
+
         public TEntity Get(Expression<Func<TEntity, bool>> filter = null)
         {
-            using (var db = new Tcontext())
+            using (var context = new Tcontext())
             {
-                return db.Set<TEntity>().SingleOrDefault(filter);
+                return context.Set<TEntity>().SingleOrDefault(filter);
             }
         }
 
         public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
-            using (var db = new Tcontext())
+            using (var context = new Tcontext())
             {
                 return filter == null
-                    ? db.Set<TEntity>().ToList()
-                    : db.Set<TEntity>().Where(filter).ToList();
+                    ? context.Set<TEntity>().ToList()
+                    : context.Set<TEntity>().Where(filter).ToList();
             }
         }
 

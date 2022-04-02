@@ -31,9 +31,16 @@ namespace AssetManagement.UI
             }).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
 
             services.AddControllersWithViews();
+
             #region Auto Mapper Configurations
 
-            services.AddAutoMapper(typeof(Startup));
+            //services.AddAutoMapper(typeof(Startup));
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MapProfile());
+            });
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
             #endregion
 
             #region Provider 
@@ -69,6 +76,11 @@ namespace AssetManagement.UI
             {
                 options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
             });
+            services.AddHttpClient<AssetManagementProvider>(options =>
+            {
+                options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
+            });
+            
             #endregion
 
         }

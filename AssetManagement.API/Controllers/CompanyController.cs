@@ -13,7 +13,7 @@ namespace AssetManagement.API.Controllers
     [ApiController]
     public class CompanyController : ControllerBase
     {
-        ICompanyDAL _dal;
+        private readonly ICompanyDAL _dal;
         public CompanyController(ICompanyDAL dal)
         {
             _dal = dal;

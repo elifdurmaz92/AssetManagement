@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<AssetListDTO>
 
 <div class="container-fluid px-4">
     <div class="card mb-4">
@@ -12,21 +12,27 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Proje</th>
-                        <th>Kod</th>
-                        <th>Açıklama</th>
-                        <th>Detay</th>
+                        <th>Kayıt Numarası</th>
+                        <th>Barkod</th>
+                        <th>Ürün Tipi</th>
+                        <th>Ürün Güncel Fiyatı</th>
+                        <th>Markası</th>
+                        <th>Modeli</th>
                     </tr>
                 </thead>
                 <tbody>
-
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th></th>
+                                <td>@item.RegistrationNumber</td>
+                                <td>@item.Barcode</td>
+                                <td>@item.AssetType</td>
+                                <td>@item.CurrentPrice</td>
+                                <td>@item.AssetBrand</td>
+                                <td>@item.AssetModel</td>
+                            </tr>
+                        }
 
                 </tbody>
             </table>

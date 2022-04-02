@@ -13,6 +13,7 @@ namespace AssetManagement.Core.Context
             optionsBuilder.UseSqlServer(@"server=DESKTOP-47MR3VQ;Database=AssetManagement;integrated security=True;MultipleActiveResultSets=True;");
         }
 
+        #region Entities
         public DbSet<ActionStatus> ActionStatus { get; set; }
         public DbSet<Asset> Asset { get; set; }
         public DbSet<AssetAction> AssetAction { get; set; }
@@ -39,16 +40,20 @@ namespace AssetManagement.Core.Context
         public DbSet<PageClaimDetail> PageClaimDetail { get; set; }
         public DbSet<Personnel> Personnel { get; set; }
         public DbSet<PersonnelLoginInfo> PersonnelLoginInfo { get; set; }
-        public DbSet<PersonnelTeam> PersonnelTeam { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<RolePersonnel> RolePersonnel { get; set; }
         public DbSet<Status> Status { get; set; }
-        public DbSet<Team> Team { get; set; }
         public DbSet<Unit> Unit { get; set; }
-        public DbSet<SystemLists> SystemLists { get; set; }
+        public DbSet<SystemLists> SystemLists { get; set; } 
+        #endregion
 
+        public DbSet<WarehouseAllAssetList> WarehouseAllAssetList { get; set; }
 
-
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.HasDefaultSchema("sp_WarehouseAllAssetList");
+        //}
+        //Burda RegistrationNumber default değer verebilmek için yazmıştım patladı acil Çözüm Bul!!!!!!!!!
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
         //    modelBuilder.Entity<Asset>(x =>  x.Property(e => e.RegistrationNumber).ValueGeneratedOnAdd() );
