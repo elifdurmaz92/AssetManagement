@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AssetManagement.BLL.Provider;
+using AssetManagement.DTO.DTO;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +10,30 @@ namespace AssetManagement.UI.Models.Viewcomponent
 {
     public class TeamAssetListViewComponent:ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly AssetManagementProvider _pro;
+        public TeamAssetListViewComponent(AssetManagementProvider pro)
         {
+            _pro = pro;
+        }
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            try
+            {
+                //Identity konusuna başlayınca burayı dinamik alacaksın
+                int TeamID = 1;
+                var result = await _pro.TeamAssetListGET(TeamID);
+                ViewBag.CountTeam = result.Count();
+                if (result != null)
+                {
+                    return View(result);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
-            return View();
+            return View(new AssetListDTO());
         }
     }
 }

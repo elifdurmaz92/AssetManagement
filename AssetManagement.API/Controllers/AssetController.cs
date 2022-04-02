@@ -32,8 +32,9 @@ namespace AssetManagement.API.Controllers
             }
             catch (Exception exc)
             {
+                return BadRequest(exc);
             }
-            return BadRequest();
+            
         }
 
         [HttpGet("~/api/asset/newasset")]
@@ -47,8 +48,8 @@ namespace AssetManagement.API.Controllers
             }
             catch (Exception exc)
             {
+                return BadRequest(exc);
             }
-            return BadRequest();
         }
     }
 }

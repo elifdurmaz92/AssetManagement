@@ -10,7 +10,7 @@ namespace AssetManagement.BLL.Provider
 {
     public class AssetTypeProvider
     {
-        HttpClient _client;
+        private readonly HttpClient _client;
         public AssetTypeProvider(HttpClient client)
         {
             _client = client;

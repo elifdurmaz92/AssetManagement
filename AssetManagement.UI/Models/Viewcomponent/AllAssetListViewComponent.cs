@@ -10,7 +10,7 @@ namespace AssetManagement.UI.Models.Viewcomponent
 {
     public class AllAssetListViewComponent:ViewComponent
     {
-        AssetManagementProvider _pro;
+        private readonly AssetManagementProvider _pro;
         public AllAssetListViewComponent(AssetManagementProvider pro)
         {
             _pro = pro;
@@ -22,6 +22,7 @@ namespace AssetManagement.UI.Models.Viewcomponent
                 //Identity konusuna başlayınca burayı dinamik alacaksın
                 int CompanyID = 1;
                 var result = await _pro.WarehouseAssetListGET(CompanyID);
+                ViewBag.CountAll = result.Count();
                 if (result != null)
                 {
                     return View(result);

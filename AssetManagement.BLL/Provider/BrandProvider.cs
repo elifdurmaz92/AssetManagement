@@ -12,8 +12,8 @@ namespace AssetManagement.BLL.Provider
 {
     public class BrandProvider
     {
-        HttpClient _client;
-        AssetTypeProvider _assetTypepro;
+        private readonly HttpClient _client;
+        private readonly AssetTypeProvider _assetTypepro;
         public BrandProvider(HttpClient client, AssetTypeProvider assetTypepro)
         {
             _client = client;

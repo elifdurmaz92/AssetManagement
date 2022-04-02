@@ -55,8 +55,8 @@ namespace AssetManagement.API.Controllers
             }
             catch (Exception exc)
             {
+                return BadRequest(exc);
             }
-            return BadRequest();
 
         }
 

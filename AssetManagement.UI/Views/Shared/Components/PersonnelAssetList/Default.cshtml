@@ -1,10 +1,12 @@
-﻿
-
+﻿@model IEnumerable<AssetListDTO>
+@{
+    var count = ViewBag.CountPers;
+}
 <div class="container-fluid px-4">
     <div class="card mb-4">
         <div class="card-header">
             <ul class="header-ul mt-2">
-                <li class="header-li">Kullanımda Olanlar <span class="tm-top-number" style=" font-size: 14px">305</span></li>
+                <li class="header-li">Kullanımda Olanlar: <span class="tm-top-number" style=" font-size: 20px">@count</span></li>
             </ul>
         </div>
         <div class="card-body">
@@ -21,16 +23,18 @@
                     </tr>
                 </thead>
                 <tbody>
-
-                    <tr>
-                        <th></th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th></th>
+                            <td>@item.RegistrationNumber</td>
+                            <td>@item.Barcode</td>
+                            <td>@item.AssetType</td>
+                            <td>@item.CurrentPrice</td>
+                            <td>@item.AssetBrand</td>
+                            <td>@item.AssetModel</td>
+                        </tr>
+                    }
 
                 </tbody>
             </table>

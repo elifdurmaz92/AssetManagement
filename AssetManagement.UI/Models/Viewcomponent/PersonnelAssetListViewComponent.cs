@@ -1,4 +1,6 @@
-﻿using AssetManagement.DTO.VM;
+﻿using AssetManagement.BLL.Provider;
+using AssetManagement.DTO.DTO;
+using AssetManagement.DTO.VM;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,16 +11,30 @@ namespace AssetManagement.UI.Models.Viewcomponent
 {
     public class PersonnelAssetListViewComponent:ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly AssetManagementProvider _pro;
+        public PersonnelAssetListViewComponent(AssetManagementProvider pro)
         {
+            _pro = pro;
+        }
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            try
+            {
+                //Identity konusuna başlayınca burayı dinamik alacaksın
+                int PersonnelID = 2;
+                var result = await _pro.PersonnelAssetListGET(PersonnelID);
+                ViewBag.CountPers = result.Count();
+                if (result != null)
+                {
+                    return View(result);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
-            //var deger = new List<AssetModelVM> {
-            //    new AssetModelVM(){Description="hede"},
-            //    new AssetModelVM(){Description="bidi"}
-
-            //};
-            //return View(deger);
-            return View();
+            return View(new AssetListDTO());
         }
     }
 }

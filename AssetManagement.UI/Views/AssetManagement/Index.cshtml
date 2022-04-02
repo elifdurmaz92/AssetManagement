@@ -1,6 +1,8 @@
-﻿<script src="~/lib/jquery/dist/jquery.js"></script>
+﻿
+@{ 
 
-
+}
+<script src="~/lib/jquery/dist/jquery.js"></script>
 <div class="container-fluid">
     <div class="animated fadeIn">
         <div class="row rowAsset">
@@ -10,10 +12,10 @@
                         <div class="col-12 mb-3">
                             <ul class="ul-menuAsset nav nav-pills flex-column" id="myTab" role="tablist">
                                 <li class="li-menuAsset nav-item ">
-                                    <a class="a-menuAsset nav-link active" id="assetMy-tab" data-toggle="tab" href="#assetMyList" role="tab" aria-controls="assetMyList" aria-selected="true">Varlıklarım<span class="asset-number ml-2">2</span> </a>
+                                    <a class="a-menuAsset nav-link active" id="assetMy-tab" data-toggle="tab" href="#assetMyList" role="tab" aria-controls="assetMyList" aria-selected="true">Varlıklarım<span class="asset-number ml-2"></span> </a>
                                 </li>
                                 <li class="li-menuAsset nav-item">
-                                    <a class="a-menuAsset nav-link" id="assetTeam-tab" data-toggle="tab" href="#assetMyTeamList" role="tab" aria-controls="assetMyTeamList" aria-selected="false">Ekibimin Varlıları <span class="asset-number">0</span></a>
+                                    <a class="a-menuAsset nav-link" id="assetTeam-tab" data-toggle="tab" href="#assetMyTeamList" role="tab" aria-controls="assetMyTeamList" aria-selected="false">Ekibimin Varlıları <span class="asset-number"> </span></a>
                                 </li>
                                 <li class="li-menuAsset nav-item">
                                     <a class="a-menuAsset nav-link" id="allAsset-tab" data-toggle="tab" href="#allAsset" role="tab" aria-controls="allAsset" aria-selected="false">Tüm Varlıklar </a>
@@ -29,13 +31,13 @@
         </div>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="assetMyList" role="tabpanel" aria-labelledby="assetMy-tab">
-                @*@await Component.InvokeAsync("TeamAssetList")*@
+                @await Component.InvokeAsync("TeamAssetList")
             </div>
             <div class="tab-pane fade show" id="assetMyTeamList" role="tabpanel" aria-labelledby="aassetTeam-tab">
-                @*@await Component.InvokeAsync("PersonnelAssetList")*@
+                @await Component.InvokeAsync("PersonnelAssetList")
             </div>
             <div class="tab-pane fade show" id="allAsset" role="tabpanel" aria-labelledby="allAsset-tab">
-                 @await Component.InvokeAsync("AllAssetList")
+                @await Component.InvokeAsync("AllAssetList")
             </div>
 
             <div class="tab-pane fade show" id="alarm" role="tabpanel" aria-labelledby="alarm-tab">

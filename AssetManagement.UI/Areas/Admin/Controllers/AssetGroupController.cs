@@ -11,7 +11,7 @@ namespace AssetManagement.UI.Areas.Admin.Controllers
     [Area("Admin")]
     public class AssetGroupController : Controller
     {
-        AssetGroupProvider _pro;
+        private readonly AssetGroupProvider _pro;
         public AssetGroupController(AssetGroupProvider pro)
         {
             _pro = pro;

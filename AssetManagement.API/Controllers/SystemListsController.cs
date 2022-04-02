@@ -12,7 +12,7 @@ namespace AssetManagement.API.Controllers
     [ApiController]
     public class SystemListsController : ControllerBase
     {
-        ISystemListsDAL _dal;
+        private readonly ISystemListsDAL _dal;
         public SystemListsController(ISystemListsDAL dal)
         {
             _dal = dal;

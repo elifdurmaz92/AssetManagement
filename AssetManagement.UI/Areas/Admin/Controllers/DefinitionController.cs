@@ -11,7 +11,7 @@ namespace AssetManagement.UI.Areas.Admin.Controllers
     [Area("Admin")]
     public class DefinitionController : Controller
     {
-        SystemListsProvider _pro;
+        private readonly SystemListsProvider _pro;
         public DefinitionController(SystemListsProvider pro)
         {
             _pro = pro;

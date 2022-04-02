@@ -44,15 +44,20 @@ namespace AssetManagement.Core.Context
         public DbSet<RolePersonnel> RolePersonnel { get; set; }
         public DbSet<Status> Status { get; set; }
         public DbSet<Unit> Unit { get; set; }
-        public DbSet<SystemLists> SystemLists { get; set; } 
+        public DbSet<SystemLists> SystemLists { get; set; }
         #endregion
 
-        public DbSet<WarehouseAllAssetList> WarehouseAllAssetList { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.HasDefaultSchema("sp_WarehouseAllAssetList");
-        //}
+        #region Prosedure
+        public DbSet<WarehouseAllAssetList> WarehouseAllAssetList { get; set; }
+        public DbSet<PersonnelAssetList> PersonnelAssetList { get; set; }
+        public DbSet<TeamAssetList> TeamAssetList { get; set; }
+        
+        #endregion
+
+
+
+
         //Burda RegistrationNumber default değer verebilmek için yazmıştım patladı acil Çözüm Bul!!!!!!!!!
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{

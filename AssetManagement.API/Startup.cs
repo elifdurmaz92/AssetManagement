@@ -78,6 +78,8 @@ namespace AssetManagement.API
             services.AddScoped<IUnitDAL, UnitDAL>();
             services.AddScoped<INewAssetDAL, NewAssetDAL>();
             services.AddScoped<IWarehouseManagementDAL, WarehouseManagementDAL>();
+            services.AddScoped<IPersonnelAssetDAL, PersonnelAssetDAL>();
+            services.AddScoped<ITeamAssetDAL, TeamAssetDAL>();
             #endregion
 
 

@@ -13,7 +13,7 @@ namespace AssetManagement.API.Controllers
     [ApiController]
     public class AssetTypeController : ControllerBase
     {
-        IAssetTypeDAL _dal;
+        private readonly IAssetTypeDAL _dal;
         public AssetTypeController(IAssetTypeDAL dal)
         {
             _dal = dal;
@@ -38,9 +38,8 @@ namespace AssetManagement.API.Controllers
             }
             catch (Exception exc)
             {
+                return BadRequest(exc);
             }
-            return BadRequest();
-
         }
 
         [HttpPut]

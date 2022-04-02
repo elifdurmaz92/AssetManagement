@@ -13,7 +13,7 @@ namespace AssetManagement.API.Controllers
     [ApiController]
     public class AssetBrandController : ControllerBase
     {
-        IAssetBrandDAL _dal;
+        private readonly IAssetBrandDAL _dal;
         public AssetBrandController(IAssetBrandDAL dal)
         {
             _dal = dal;
