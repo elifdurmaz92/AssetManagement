@@ -52,6 +52,9 @@ namespace AssetManagement.Data.Mapping
 
             CreateMap<WarehouseAllAssetList, AssetListDTO>();
             CreateMap<AssetListDTO, WarehouseAllAssetList>();
+
+            CreateMap<ActionStatus, ActionStatusDTO>();
+            CreateMap<ActionStatusDTO, ActionStatus>();
         }
     }
 }

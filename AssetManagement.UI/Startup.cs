@@ -80,6 +80,10 @@ namespace AssetManagement.UI
             {
                 options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
             });
+            services.AddHttpClient<AssetActionProvider>(options =>
+            {
+                options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
+            });
             
             #endregion
 

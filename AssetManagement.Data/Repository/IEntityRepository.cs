@@ -15,7 +15,8 @@ namespace AssetManagement.Data.Repository
         void Update(T entity);
         void Delete(T entity);
         void SoftDelete(T entity);
-        Task<IEnumerable<T>> GetAllAsync();
+        Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> filter = null);
+        //Task<IEnumerable<T>> GetAllAsync();
         Task<IEnumerable<T>> ExecuteSqlQueryOrProcedure(string Query);
     }
 }

@@ -10,16 +10,17 @@ namespace AssetManagement.Core.Entity
     {
         [Key]
         public int ID { get; set; }
-        public int AssetActionID { get; set; }
         public int StatusID { get; set; }
+        public int StatusActionID { get; set; }    
+        public string StatusController { get; set; }
+        public string StatusActionMetod { get; set; }
+        public string ActionText { get; set; }
         public DateTime? CreatedDate { get; set; }
         public int? CreatedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public int? ModifiedBy { get; set; }
         public bool? IsActive { get; set; }
 
-        [ForeignKey("AssetActionID")]
-        public virtual AssetAction AssetAction { get; set; }
 
         [ForeignKey("StatusID")]
         public virtual Status Status { get; set; }

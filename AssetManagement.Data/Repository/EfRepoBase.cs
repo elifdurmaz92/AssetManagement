@@ -61,15 +61,25 @@ namespace AssetManagement.Data.Repository
             }
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        public async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter = null)
         {
-            List<TEntity> entities;
             using (var context = new Tcontext())
             {
-                entities = await context.Set<TEntity>().ToListAsync();
+               return filter == null
+                    ?  await context.Set<TEntity>().ToListAsync()
+                    :  await context.Set<TEntity>().Where(filter).ToListAsync();
+               
             }
-            return entities;
         }
+        //public async Task<IEnumerable<TEntity>> GetAllAsync()
+        //{
+        //    List<TEntity> entities;
+        //    using (var context = new Tcontext())
+        //    {
+        //        entities = await context.Set<TEntity>().ToListAsync();
+        //    }
+        //    return entities;
+        //}
 
         public void SoftDelete(TEntity entity)
         {

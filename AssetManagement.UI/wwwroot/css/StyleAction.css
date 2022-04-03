@@ -40,4 +40,10 @@
     border-radius: 10px;
 }
 
+.RegNumberLbl {
+    border: 1px solid #D0D3D4;
+    border-radius: 10px 0px 0px 10px;
+    text-align: center;
+    color: #7B7D7D;
+}
 

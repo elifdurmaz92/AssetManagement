@@ -58,12 +58,15 @@ namespace AssetManagement.API
 
             services.AddScoped<IAuthRepo, AuthRepo>();
             services.AddScoped<IAuthDAL, AuthDAL>();
+            services.AddScoped<IActionStatusDAL, ActionStatusDAL>();
+            services.AddScoped<IAssetActionDAL, AssetActionDAL>();
             services.AddScoped<IAssetTypeDAL, AssetTypeDAL>();
             services.AddScoped<IAssetGroupDAL, AssetGroupDAL>();
             services.AddScoped<IAssetBrandDAL, AssetBrandDAL>();
             services.AddScoped<IAssetModelDAL, AssetModelDAL>();
             services.AddScoped<IAssetDAL, AssetDAL>();
-            services.AddScoped<IAssetDAL, AssetDAL>();
+            services.AddScoped<IAssetOwnerDAL, AssetOwnerDAL>();
+            services.AddScoped<IAssetCustomerDAL, AssetCustomerDAL>();
             services.AddScoped<IAssetBarcodeDAL, AssetBarcodeDAL>();
             services.AddScoped<IAssetWithoutBarcodeDAL, AssetWithoutBarcodeDAL>();
             services.AddScoped<IAssetStatusDAL, AssetStatusDAL>();
@@ -74,12 +77,15 @@ namespace AssetManagement.API
             services.AddScoped<ICustomerDAL, CustomerDAL>();
             services.AddScoped<IPersonnelDAL, PersonnelDAL>();
             services.AddScoped<IPriceDAL, PriceDAL>();
+            services.AddScoped<IStatusDAL, StatusDAL>();
             services.AddScoped<ISystemListsDAL, SystemListsDAL>();
             services.AddScoped<IUnitDAL, UnitDAL>();
             services.AddScoped<INewAssetDAL, NewAssetDAL>();
             services.AddScoped<IWarehouseManagementDAL, WarehouseManagementDAL>();
             services.AddScoped<IPersonnelAssetDAL, PersonnelAssetDAL>();
             services.AddScoped<ITeamAssetDAL, TeamAssetDAL>();
+
+
             #endregion
 
 
@@ -123,7 +129,7 @@ namespace AssetManagement.API
             app.UseRouting();
 
             app.UseCors();
-            
+
             app.UseCors(builder => builder.WithOrigins(Configuration.GetSection("AppSettings:CorsConn").Value).AllowAnyHeader());
 
             app.UseAuthorization();

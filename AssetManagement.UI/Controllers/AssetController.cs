@@ -99,5 +99,6 @@ namespace AssetManagement.UI.Controllers
             ViewBag.mesaj = result;
             return RedirectToAction("Add");
         }
+
     }
 }

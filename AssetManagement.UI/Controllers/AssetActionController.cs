@@ -1,4 +1,5 @@
-﻿using AssetManagement.DTO.DTO;
+﻿using AssetManagement.BLL.Provider;
+using AssetManagement.DTO.DTO;
 using AssetManagement.DTO.VM;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,18 +11,70 @@ namespace AssetManagement.UI.Controllers
 {
     public class AssetActionController : Controller
     {
-        public IActionResult Index()
+        AssetActionProvider _pro;
+        public AssetActionController(AssetActionProvider pro)
         {
-            AddAssetVM asset = new AddAssetVM()
+            _pro = pro;
+        }
+        public IActionResult Index(AssetActionDetailDTO assetaction =null)
+        {
+            if (assetaction.AssetActionListDTO==null)
             {
-                Group = new List<AssetGroupDTO>(),
-                Currency = new List<CurrencyDTO>(),
-                Unit = new List<UnitDTO>(),
-                AssetType = new List<AssetTypeDTO>()
-            };
-            return View(asset);
+                assetaction = new AssetActionDetailDTO()
+                {
+                    AssetActionListDTO = new AssetActionListDTO() { },
+                    ActionStatusDTO = new List<ActionStatusDTO>() { new ActionStatusDTO() { } }
+                };
+
+            }
+
+            return View(assetaction);
 
         }
+
+        [HttpPost]
+        public async Task<IActionResult> GetActionAsset(AssetActionDetailDTO assetaction)
+        {
+            try
+            {
+                var result = await _pro.GetAssetActionDetail(assetaction.RegistrationNumber);
+                if (result != null)
+                {
+                    return View("Index", result);
+
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index");
+            }
+
+        }
+
+
+        //Bunu sonra Asset controlura taşı buna bakıcam sonra
+        public IActionResult UpdateAsset(int assetID=0)
+        {
+
+            //boş gelme durumunda
+            if (assetID==0)
+            {
+                AddAssetVM asset = new AddAssetVM()
+                {
+                    Group = new List<AssetGroupDTO>(),
+                    Currency = new List<CurrencyDTO>(),
+                    Unit = new List<UnitDTO>(),
+                    AssetType = new List<AssetTypeDTO>()
+                };
+                return PartialView(asset);
+            }
+
+            return PartialView();
+
+        }
+
+
         /// <summary>
         /// Aksiyonlardan Depoya Ata Modal sayfasının açılması
         /// </summary>

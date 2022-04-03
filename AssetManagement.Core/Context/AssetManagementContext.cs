@@ -16,7 +16,6 @@ namespace AssetManagement.Core.Context
         #region Entities
         public DbSet<ActionStatus> ActionStatus { get; set; }
         public DbSet<Asset> Asset { get; set; }
-        public DbSet<AssetAction> AssetAction { get; set; }
         public DbSet<AssetBarcode> AssetBarcode { get; set; }
         public DbSet<AssetBrand> AssetBrand { get; set; }
         public DbSet<AssetModel> AssetModel { get; set; }
