@@ -1,6 +1,7 @@
 ﻿@{
     Layout = null;
 }
+@model AssetStatusDTO
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -12,10 +13,12 @@
                 </button>
             </div>
             <form asp-action="PutInStorage" asp-controller="AssetAction" method="post">
+                @Html.HiddenFor(x => x.AssetID)
+                @Html.HiddenFor(x => x.StatusID)
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="lbl-asset"><label class="reqSpan">*</label> Açıklama</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <textarea asp-for="@Model.Note" class="form-control" rows="3"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

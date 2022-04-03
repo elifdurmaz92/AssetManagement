@@ -80,15 +80,30 @@ namespace AssetManagement.UI.Controllers
         /// </summary>
         /// <returns></returns>
         #region Depoya Ata
-        public IActionResult _PutInStorage()
+        public IActionResult _PutInStorage(int assetID,int statusActionID)
         {
+            AssetStatusDTO assetStatus = new AssetStatusDTO()
+            {
+                StatusID = statusActionID,
+                AssetID = assetID
+            };
 
-            return View();
+            return View(assetStatus);
         }
 
         [HttpPost]
-        public IActionResult PutInStorage(string test)
+        public IActionResult PutInStorage(AssetStatusDTO assetstatus)
         {
+            var result = _pro.AddAssetAction(assetstatus);
+            if (result==null)
+            {
+                ViewBag.mesaj = "Hata";
+
+            }
+            else
+            {
+                ViewBag.mesaj = "İşlem Başarılı";
+            }
 
             return RedirectToAction(nameof(Index));
         }
@@ -118,14 +133,28 @@ namespace AssetManagement.UI.Controllers
         /// </summary>
         /// <returns></returns>
         #region İptal Et
-        public IActionResult _ToCancel()
+        public IActionResult _ToCancel(int assetID, int statusActionID)
         {
+            AssetStatusDTO assetStatus = new AssetStatusDTO()
+            {
+                StatusID = statusActionID,
+                AssetID = assetID
+            };
 
-            return View();
+            return View(assetStatus);
         }
         [HttpPost]
-        public IActionResult ToCancel(string test)
+        public IActionResult ToCancel(AssetStatusDTO assetstatus)
         {
+            var result = _pro.AddAssetAction(assetstatus);
+            if (result == null)
+            {
+                ViewBag.mesaj = "Hata";
+            }
+            else
+            {
+                ViewBag.mesaj = "İşlem Başarılı";
+            }
 
             return RedirectToAction(nameof(Index));
         }
@@ -136,14 +165,29 @@ namespace AssetManagement.UI.Controllers
         /// </summary>
         /// <returns></returns>
         #region Yorum Ekle
-        public IActionResult _AddComment()
+        public IActionResult _AddComment(int assetID, int statusActionID)
         {
+            AssetStatusDTO assetStatus = new AssetStatusDTO()
+            {
+                StatusID = statusActionID,
+                AssetID = assetID
+            };
 
-            return View();
+            return View(assetStatus);
         }
         [HttpPost]
-        public IActionResult AddComment(string test)
+        public IActionResult AddComment(AssetStatusDTO assetstatus)
         {
+            var result = _pro.AddAssetAction(assetstatus);
+            if (result == null)
+            {
+                ViewBag.mesaj = "Hata";
+
+            }
+            else
+            {
+                ViewBag.mesaj = "İşlem Başarılı";
+            }
 
             return RedirectToAction(nameof(Index));
         }
@@ -154,14 +198,28 @@ namespace AssetManagement.UI.Controllers
         /// </summary>
         /// <returns></returns>
         #region Kayıp Çalıntı Bildir
-        public IActionResult _ReportOfLostOrStolen()
+        public IActionResult _ReportOfLostOrStolen(int assetID, int statusActionID)
         {
+            AssetStatusDTO assetStatus = new AssetStatusDTO()
+            {
+                StatusID = statusActionID,
+                AssetID = assetID
+            };
 
-            return View();
+            return View(assetStatus);
         }
         [HttpPost]
-        public IActionResult ReportOfLostOrStolen(string test)
+        public IActionResult ReportOfLostOrStolen(AssetStatusDTO assetstatus)
         {
+            var result = _pro.AddAssetAction(assetstatus);
+            if (result == null)
+            {
+                ViewBag.mesaj = "Hata";
+            }
+            else
+            {
+                ViewBag.mesaj = "İşlem Başarılı";
+            }
 
             return RedirectToAction(nameof(Index));
         }

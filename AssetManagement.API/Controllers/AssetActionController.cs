@@ -1,4 +1,6 @@
-﻿using AssetManagement.DAL;
+﻿using AssetManagement.Core.Entity;
+using AssetManagement.DAL;
+using AssetManagement.DTO.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,10 +14,12 @@ namespace AssetManagement.API.Controllers
     [ApiController]
     public class AssetActionController : ControllerBase
     {
-        IAssetActionDAL _dal;
-        public AssetActionController(IAssetActionDAL dal)
+       private readonly IAssetActionDAL _dal;
+        private readonly IAssetStatusDAL _assetstatusDAL;
+        public AssetActionController(IAssetActionDAL dal, IAssetStatusDAL assetstatusDAL)
         {
             _dal = dal;
+            _assetstatusDAL = assetstatusDAL;
         }
 
         [HttpGet("~/api/getassetaction/{RegistrationNumber}")]
@@ -24,7 +28,6 @@ namespace AssetManagement.API.Controllers
             try
             {
                 var veri = await _dal.AssetActionDetailGET(registrationNumber);
-
                 return Ok(veri);
             }
             catch (Exception exc)
@@ -33,6 +36,24 @@ namespace AssetManagement.API.Controllers
             }
 
         }
+
+
+        [HttpPost]
+        [Route("~/api/addassetaction")]
+        public IActionResult AssetActionPOST([FromBody] AssetStatus entity)
+        {
+            try
+            {
+                _assetstatusDAL.Add(entity);
+                return new StatusCodeResult(201);
+            }
+            catch (Exception exc)
+            {
+                return BadRequest(exc);
+            }
+
+        }
+
 
 
     }

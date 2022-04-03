@@ -24,7 +24,7 @@
                             <div class="col-md-4">
                                 <form asp-action="GetActionAsset" asp-controller="AssetAction" method="post">
                                     <div class="input-group">
-                                        <div class="col-md-4 RegNumberLbl"><label style=" margin-top: 5%;">Kayıt No</label></div>
+                                        <div class="col-md-4 RegNumberLbl"><label style="">Kayıt No</label></div>
                                         <input class="form-control" id="assetRegNoInput" asp-for="@Model.RegistrationNumber" type="text" placeholder="" aria-label="Kayıt No" aria-describedby="btnAssetSearch" />
                                         <button class="btn btn-primary" id="assetRegNoBtn" type="submit"><i class="fas fa-search"></i></button>
                                     </div>
@@ -73,7 +73,7 @@
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         @foreach (var item in Model.ActionStatusDTO)
                                         {
-                                            <a class="dropdown-item modal-link" data-toggle="modal" data-target="#exampleModal" data-targeturl="@Url.Action(""+item.StatusActionMetod+"",""+item.StatusController+"")" href="#">@item.ActionText </a>
+                                            <a class="dropdown-item modal-link" data-toggle="modal" data-target="#exampleModal" data-targeturl="@Url.Action(""+item.StatusActionMetod+"",""+item.StatusController+"", new { assetID = Model.AssetID ,statusActionID=item.StatusActionID})" href="#">@item.ActionText </a>
                                         }
 
                                     </div>
@@ -109,8 +109,6 @@
                 });
             });
         });
-
-
     });
 
 </script>

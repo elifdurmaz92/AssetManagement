@@ -10,6 +10,7 @@ namespace AssetManagement.DAL
 {
     public class AssetActionDAL : IAssetActionDAL
     {
+        #region Fields
         private readonly IAssetDAL _assetDAL;
         private readonly IAssetStatusDAL _assetstatusDAL;
         private readonly IPersonnelDAL _persDAL;
@@ -18,7 +19,8 @@ namespace AssetManagement.DAL
         private readonly ICustomerDAL _customerDAL;
         private readonly IAssetCustomerDAL _assetCusDAL;
         private readonly IActionStatusDAL _actionstatusDAL;
-        private readonly IMapper _map;
+        private readonly IMapper _map; 
+        #endregion
         public AssetActionDAL(IAssetDAL assetDAL, IAssetStatusDAL assetstatusDAL, IPersonnelDAL persDAL, IStatusDAL statusDAL, IAssetOwnerDAL assetownerDAL, ICustomerDAL customerDAL, IAssetCustomerDAL assetcusDAL, IActionStatusDAL actionstatusDAL,IMapper map)
         {
             _assetDAL = assetDAL;
