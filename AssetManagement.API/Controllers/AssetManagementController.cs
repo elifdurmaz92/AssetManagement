@@ -1,6 +1,7 @@
 ﻿using AssetManagement.DAL;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,12 +16,15 @@ namespace AssetManagement.API.Controllers
         private readonly IWarehouseManagementDAL _warehouseDAL;
         private readonly IPersonnelAssetDAL _perassetDAL;
         private readonly ITeamAssetDAL _teamassetDAL;
-        public AssetManagementController(IWarehouseManagementDAL warehouseDAL, IPersonnelAssetDAL perassetDAL, ITeamAssetDAL teamassetDAL)
+        private readonly ILogger<AssetManagementController> _logger;
+        public AssetManagementController(IWarehouseManagementDAL warehouseDAL, IPersonnelAssetDAL perassetDAL, ITeamAssetDAL teamassetDAL, ILogger<AssetManagementController> logger)
         {
             _warehouseDAL = warehouseDAL;
             _perassetDAL = perassetDAL;
             _teamassetDAL = teamassetDAL;
+            _logger = logger;
         }
+
 
         /// <summary>
         /// Depo Yönetimi Tüm varlıklar
@@ -35,10 +39,12 @@ namespace AssetManagement.API.Controllers
             try
             {
                 var veri = await _warehouseDAL.ExecuteSqlQueryOrProcedure(Query);
+                _logger.LogInformation("Depo yöneticisi depo varlıklarını listeledi.");
                 return Ok(veri);
             }
             catch (Exception exc)
             {
+                _logger.LogError("Depodaki varliklar getirilirken hata olustu");
                 return BadRequest(exc);
             }         
         }
