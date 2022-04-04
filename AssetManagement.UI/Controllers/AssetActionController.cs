@@ -53,27 +53,6 @@ namespace AssetManagement.UI.Controllers
         }
 
 
-        //Bunu sonra Asset controlura taşı buna bakıcam sonra
-        public IActionResult UpdateAsset(int assetID=0)
-        {
-
-            //boş gelme durumunda
-            if (assetID==0)
-            {
-                AddAssetVM asset = new AddAssetVM()
-                {
-                    Group = new List<AssetGroupDTO>(),
-                    Currency = new List<CurrencyDTO>(),
-                    Unit = new List<UnitDTO>(),
-                    AssetType = new List<AssetTypeDTO>()
-                };
-                return PartialView(asset);
-            }
-
-            return PartialView();
-
-        }
-
 
         /// <summary>
         /// Aksiyonlardan Depoya Ata Modal sayfasının açılması
