@@ -19,6 +19,7 @@ using AssetManagement.DAL;
 using AssetManagement.Data.Repository.AuthRepo;
 using AutoMapper;
 using AssetManagement.Data.Mapping;
+using AssetManagement.DAL.Publisher;
 
 namespace AssetManagement.API
 {
@@ -85,7 +86,8 @@ namespace AssetManagement.API
             services.AddScoped<IWarehouseManagementDAL, WarehouseManagementDAL>();
             services.AddScoped<IPersonnelAssetDAL, PersonnelAssetDAL>();
             services.AddScoped<ITeamAssetDAL, TeamAssetDAL>();
-
+            services.AddScoped<IPublisherManager, PublisherManager>();
+            services.AddScoped<ICommunicationDAL, CommunicationDAL>();
 
             #endregion
 

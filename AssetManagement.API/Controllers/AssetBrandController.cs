@@ -1,5 +1,6 @@
 ﻿using AssetManagement.Core.Entity;
 using AssetManagement.DAL;
+using AssetManagement.DAL.Publisher;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,9 +15,11 @@ namespace AssetManagement.API.Controllers
     public class AssetBrandController : ControllerBase
     {
         private readonly IAssetBrandDAL _dal;
-        public AssetBrandController(IAssetBrandDAL dal)
+        private readonly IPublisherManager _publisherManager;
+        public AssetBrandController(IAssetBrandDAL dal, IPublisherManager publisherManager)
         {
             _dal = dal;
+            _publisherManager = publisherManager;
         }
 
         [HttpGet("")]
@@ -69,11 +72,12 @@ namespace AssetManagement.API.Controllers
 
         [HttpPost]
         [Route("~/api/addassetbrand")]
-        public IActionResult POST([FromBody] AssetBrand entity)
+        public async Task<IActionResult> POST([FromBody] AssetBrand entity)
         {
             try
             {
                 _dal.Add(entity);
+                await _publisherManager.Publish(entity.Description);
                 return new StatusCodeResult(201);
             }
             catch (Exception exc)
