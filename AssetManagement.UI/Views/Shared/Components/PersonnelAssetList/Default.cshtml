@@ -2,6 +2,9 @@
 @{
     var count = ViewBag.CountPers;
 }
+
+
+
 <div class="container-fluid px-4">
     <div class="card mb-4">
         <div class="card-header">
@@ -10,7 +13,7 @@
             </ul>
         </div>
         <div class="card-body">
-            <table id="datatablesPersAssetList">
+            <table id="datatablesPersAssetList" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
                         <th></th>
@@ -41,3 +44,44 @@
         </div>
     </div>
 </div>
+
+<script>
+        @*$(document).ready(function () {
+            $('#datatablesPersAssetList').DataTable({
+            dom: 'Bfrtip',
+
+            buttons: [
+                {
+                    extend: 'copy',
+                    exportOptions: {
+                        columns: [0, 1,2,3,4,5,6]
+                    },
+                    text: '<img src="@Url.Content("~/images/dataTables/copy-min.png")" />'
+                },
+                {
+                    extend: 'excel',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6]
+                    },
+                    text: '<img src="@Url.Content("~/images/dataTables/excel-min.png")" />'
+                },
+                {
+                    extend: 'pdf',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6]
+                    },
+                    text: '<img src="@Url.Content("~/images/dataTables/pdf-min.png")" />'
+                },
+                {
+                    extend: 'print',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6]
+                    },
+                    text: ' <img src="@Url.Content("~/images/dataTables/print-min.png")" />'
+                }
+
+            ]
+        });
+    });*@
+
+</script>
