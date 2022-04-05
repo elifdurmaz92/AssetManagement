@@ -51,16 +51,206 @@ namespace AssetManagement.Core.Context
         public DbSet<WarehouseAllAssetList> WarehouseAllAssetList { get; set; }
         public DbSet<PersonnelAssetList> PersonnelAssetList { get; set; }
         public DbSet<TeamAssetList> TeamAssetList { get; set; }
-        
+
         #endregion
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            #region SystemLists Seed
+            modelBuilder.Entity<SystemLists>().HasData(
+                   new SystemLists()
+                   {
+                       Project = "Zimmet",
+                       Code = "Product_Asset_ProductGroup",
+                       Description = "Ürün Grubu (1)",
+                       Detail = "",
+                       OperationController = "Admin/AssetGroup",
+                       OperationAction = "Index",
+                       IsActive = true
+                   },
+                   new SystemLists()
+                   {
+                       Project = "Zimmet",
+                       Code = "Product_Asset_Brand",
+                       Description = "Marka",
+                       Detail = "",
+                       OperationController = "Admin/Brand",
+                       OperationAction = "Index",
+                       IsActive = true
+                   },
+                   new SystemLists()
+                   {
+                       Project = "Zimmet",
+                       Code = "Product_Asset_Model",
+                       Description = "Model (3)",
+                       Detail = "",
+                       OperationController = "Admin/Model",
+                       OperationAction = "Index",
+                       IsActive = true
+                   },
+                   new SystemLists()
+                   {
+                       Project = "Zimmet",
+                       Code = "Product_Asset_AssetType",
+                       Description = "Zimmet Modülü Zimmet Türü",
+                       Detail = "",
+                       IsActive = true
+                   },
+                   new SystemLists()
+                   {
+                       Project = "Zimmet",
+                       Code = "Product_Asset_Company",
+                       Description = "Üretici (2)",
+                       Detail = "",
+                       IsActive = true
+                   },
+                   new SystemLists()
+                   {
+                       Project = "Zimmet",
+                       Code = "ProductCostCurrency",
+                       Description = "Zimmet Modülü Ürünün Para Birimi Listesi",
+                       Detail = "",
+                       IsActive = true
+                   }
+               );
+            #endregion
 
+            #region ActionStatus Seed
+            modelBuilder.Entity<ActionStatus>().HasData(
+                  new ActionStatus()
+                  {
+                      StatusID = 3,
+                      StatusActionID = 4,
+                      StatusController = "AssetAction",
+                      StatusActionMetod = "_ToRetire",
+                      ActionText = "Emekli Et",
+                  },
+                      new ActionStatus()
+                      {
+                          StatusID = 3,
+                          StatusActionID = 5,
+                          StatusController = "AssetAction",
+                          StatusActionMetod = "_ToCancel",
+                          ActionText = "İptal Et",
+                      },
+                          new ActionStatus()
+                          {
+                              StatusID = 3,
+                              StatusActionID = 5,
+                              StatusController = "AssetAction",
+                              StatusActionMetod = "_ReportOfLostOrStolen",
+                              ActionText = "Kayıp/Çalıntı Bildir",
+                          },
+                              new ActionStatus()
+                              {
+                                  StatusID = 3,
+                                  StatusActionID = 7,
+                                  StatusController = "AssetAction",
+                                  StatusActionMetod = "_ToReturn",
+                                  ActionText = "İade Et",
+                              },
+                                  new ActionStatus()
+                                  {
+                                      StatusID = 3,
+                                      StatusActionID = 8,
+                                      StatusController = "AssetAction",
+                                      StatusActionMetod = "_AddComment",
+                                      ActionText = "Yorum Ekle",
+                                  },
+                  new ActionStatus()
+                  {
+                      StatusID = 2,
+                      StatusActionID = 6,
+                      StatusController = "AssetAction",
+                      StatusActionMetod = "_PutInStorage",
+                      ActionText = "Depoya At",
+                  },
+                      new ActionStatus()
+                      {
+                          StatusID = 2,
+                          StatusActionID = 2,
+                          StatusController = "AssetAction",
+                          StatusActionMetod = "_ToOwner",
+                          ActionText = "Zimmet Ata",
+                      },
+                         new ActionStatus()
+                         {
+                             StatusID = 2,
+                             StatusActionID = 3,
+                             StatusController = "AssetAction",
+                             StatusActionMetod = "_ToConsume",
+                             ActionText = "Tüket",
+                         },
+                           new ActionStatus()
+                           {
+                               StatusID = 2,
+                               StatusActionID = 4,
+                               StatusController = "AssetAction",
+                               StatusActionMetod = "_ToRetire",
+                               ActionText = "Emekli Et",
+                           },
+                              new ActionStatus()
+                              {
+                                  StatusID = 2,
+                                  StatusActionID = 6,
+                                  StatusController = "AssetAction",
+                                  StatusActionMetod = "_ReportOfLostOrStolen",
+                                  ActionText = "Kayıp/Çalıntı Bildir",
+                              },
+                               new ActionStatus()
+                               {
+                                   StatusID = 2,
+                                   StatusActionID = 8,
+                                   StatusController = "AssetAction",
+                                   StatusActionMetod = "_AddComment",
+                                   ActionText = "Yorum Ekle",
+                               },
+                 new ActionStatus()
+                 {
+                     StatusID = 1,
+                     StatusActionID = 4,
+                     StatusController = "AssetAction",
+                     StatusActionMetod = "_ToRetire",
+                     ActionText = "Emekli Et",
+                 },
+                    new ActionStatus()
+                    {
+                        StatusID = 1,
+                        StatusActionID = 6,
+                        StatusController = "AssetAction",
+                        StatusActionMetod = "_ReportOfLostOrStolen",
+                        ActionText = "Kayıp/Çalıntı Bildir",
+                    },
+                      new ActionStatus()
+                      {
+                          StatusID = 1,
+                          StatusActionID = 2,
+                          StatusController = "AssetAction",
+                          StatusActionMetod = "_ToOwner",
+                          ActionText = "Zimmet Ata",
+                      },
+                         new ActionStatus()
+                         {
+                             StatusID = 1,
+                             StatusActionID = 8,
+                             StatusController = "AssetAction",
+                             StatusActionMetod = "_AddComment",
+                             ActionText = "Yorum Ekle",
+                         }
+                  );
+            #endregion
+
+            modelBuilder.Entity<Asset>(x => x.Property(e => e.RegistrationNumber).ValueGeneratedOnAdd());
+            base.OnModelCreating(modelBuilder);
+        }
 
 
         //Burda RegistrationNumber default değer verebilmek için yazmıştım patladı acil Çözüm Bul!!!!!!!!!
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
-        //    modelBuilder.Entity<Asset>(x =>  x.Property(e => e.RegistrationNumber).ValueGeneratedOnAdd() );
+        //    modelBuilder.Entity<Asset>(x => x.Property(e => e.RegistrationNumber).ValueGeneratedOnAdd());
+        //    //entity.Property(u => u.RegistrationNumber).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+        //    base.OnModelCreating(modelBuilder);
         //}
     }
 }

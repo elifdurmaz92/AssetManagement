@@ -10,6 +10,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation.AspNetCore;
+using AssetManagement.DTO.Validation;
+using FluentValidation;
+using AssetManagement.DTO.VM;
 
 namespace AssetManagement.UI
 {
@@ -31,6 +35,10 @@ namespace AssetManagement.UI
             }).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
 
             services.AddControllersWithViews();
+
+            //Validation
+            services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AddAssetVMValidator>());
+
 
             #region Auto Mapper Configurations
 
@@ -84,8 +92,10 @@ namespace AssetManagement.UI
             {
                 options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
             });
-            
+
             #endregion
+
+
 
         }
 
@@ -116,7 +126,7 @@ namespace AssetManagement.UI
             {
                 routes.MapRoute(
                   name: "areas",
-                   template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                   template: "{area:exists}/{controller=Definition}/{action=SystemLists}/{id?}");
                 routes.MapRoute(
                    name: "default",
                    template: "{controller=Home}/{action=Index}/{id?}");

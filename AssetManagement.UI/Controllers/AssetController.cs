@@ -6,10 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+
+
 
 namespace AssetManagement.UI.Controllers
 {
@@ -38,6 +41,7 @@ namespace AssetManagement.UI.Controllers
         /// Asset ekleme sayfası
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public async Task<IActionResult> Add()
         {
             try
@@ -58,11 +62,12 @@ namespace AssetManagement.UI.Controllers
 
             }
 
-            AddAssetVM asset = new AddAssetVM() {
-                Group =new List<AssetGroupDTO>(),
-                Currency=new List<CurrencyDTO>(),
-                Unit=new List<UnitDTO>(),
-                AssetType=new List<AssetTypeDTO>()
+            AddAssetVM asset = new AddAssetVM()
+            {
+                Group = new List<AssetGroupDTO>(),
+                Currency = new List<CurrencyDTO>(),
+                Unit = new List<UnitDTO>(),
+                AssetType = new List<AssetTypeDTO>()
             };
             return View(asset);
         }
@@ -93,10 +98,22 @@ namespace AssetManagement.UI.Controllers
 
 
         [HttpPost]
-        public IActionResult AssetAdd(AddAssetVM assetVM)
+        public async Task<IActionResult> AssetAdd(AddAssetVM assetVM)
         {
-            var result = _assetpro.AddNewAsset(_mapper.Map<AddNewAssetDTO>(assetVM));
+            ////validation işleminde hata aldım
+            //if (ModelState.IsValid)
+            //{
+            //    var result = await _assetpro.AddNewAsset(_mapper.Map<AddNewAssetDTO>(assetVM));
+            //    ViewBag.mesaj = result;
+
+            //    return RedirectToAction("Add");
+            //}
+            //return View("Add", assetVM);
+
+
+            var result = await _assetpro.AddNewAsset(_mapper.Map<AddNewAssetDTO>(assetVM));
             ViewBag.mesaj = result;
+
             return RedirectToAction("Add");
         }
 

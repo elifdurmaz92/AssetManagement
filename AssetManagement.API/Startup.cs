@@ -37,6 +37,7 @@ namespace AssetManagement.API
             services.AddControllers();
 
             services.AddDbContext<AuthContext>(a => a.UseSqlServer(Configuration.GetConnectionString("DefaultConn")));
+
             services.AddCors();
             services.AddCors(options =>
             {

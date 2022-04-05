@@ -56,24 +56,28 @@
                                         <select asp-for="@Model.AssetGroupID" asp-items="@(new SelectList(Model.Group, "ID","Description"))" class="form-control">
                                             <option value="">Seçiniz</option>
                                         </select>
+                                        <span class="error text-danger" asp-validation-for="@Model.AssetGroupID"></span>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Ürün Tipi</label>
                                         <select asp-for="@Model.AssetTypeID" asp-items="@(new SelectList(Model.AssetType, "ID","Description"))" class="form-control" id="assetTypeSelectID">
                                             <option value="">Seçiniz</option>
                                         </select>
+                                        <span class="error text-danger" asp-validation-for="@Model.AssetTypeID"></span>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Marka</label>
                                         <select asp-for="@Model.AssetBrandID" asp-items="@(new List<SelectListItem>())" class="form-control" id="brandSelectID">
                                             <option value="">Seçiniz</option>
                                         </select>
+                                        <span class="error text-danger" asp-validation-for="@Model.AssetBrandID"></span>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Model</label>
                                         <select asp-for="@Model.AssetModelID" asp-items="@(new List<SelectListItem>())" class="form-control" id="modelSelectID">
                                             <option value="">Seçiniz</option>
                                         </select>
+                                        <span class="error text-danger" asp-validation-for="@Model.AssetModelID"></span>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset">Garantili mi</label>
@@ -84,6 +88,7 @@
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Açıklama</label>
                                         <textarea class="form-control" asp-for="@Model.Description" rows="3"></textarea>
+                                        <span class="error text-danger" asp-validation-for="@Model.Description"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -98,12 +103,14 @@
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Ürünün Maliyeti</label>
                                         <input type="text" asp-for="@Model.Cost" class="form-control">
+                                        <span class="error text-danger" asp-validation-for="@Model.Cost"></span>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset"><label class="reqSpan">*</label> Ürünün Para Birimi</label>
                                         <select asp-for="@Model.CurrencyID" asp-items="@(new SelectList(Model.Currency, "ID","Description"))" class="form-control">
                                             <option value="">Seçiniz</option>
                                         </select>
+                                        <span class="error text-danger" asp-validation-for="@Model.CurrencyID"></span>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl-asset">Ürünün Güncel Fiyatı</label>
