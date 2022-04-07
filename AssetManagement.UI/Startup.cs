@@ -35,6 +35,7 @@ namespace AssetManagement.UI
             }).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
 
             services.AddControllersWithViews();
+            services.AddSession();
 
             //Validation
             services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AddAssetVMValidator>());
@@ -92,7 +93,10 @@ namespace AssetManagement.UI
             {
                 options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
             });
-
+            services.AddHttpClient<AuthProvider>(options =>
+            {
+                options.BaseAddress = new Uri(Configuration["mybaseAdres"]);
+            });
             #endregion
 
 
@@ -113,6 +117,8 @@ namespace AssetManagement.UI
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseAuthorization();
 

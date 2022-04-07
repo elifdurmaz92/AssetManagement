@@ -5,7 +5,7 @@
     var donendeger = ViewBag.result == null ? "" : ViewBag.result[0];
     var className = ViewBag.result == null ? "" : ViewBag.result[1];
 }
-@model LoginVM
+@model LoginDTO
 
 <!DOCTYPE html>
 <html lang="tr">
@@ -32,17 +32,17 @@
                                     <div>
                                         <span class="@className">@donendeger</span>
                                     </div>
-                                    <form asp-action="LoginIn" asp-controller="Auth" method="post">
+                                    <form asp-action="Login" asp-controller="Auth" method="post">
                                         <div class="form-floating mb-3">
                                             @Html.TextBoxFor(a => a.UserName, new { @class = "form-control", @id = "inputUserName", @type = "username", @placeholder = "UserName" })
                                             <label for="inputUserName">UserName</label>
-                                            @Html.ValidationMessageFor(x => x.UserName)
+                                            @*@Html.ValidationMessageFor(x => x.UserName)*@
 
                                         </div>
                                         <div class="form-floating mb-3">
                                             @Html.TextBoxFor(a => a.Password, new { @class = "form-control", @id = "inputPassword", @type = "password", @placeholder = "Password" })
                                             <label for="inputPassword">Password</label>
-                                            @Html.ValidationMessageFor(x => x.Password)
+                                            @*@Html.ValidationMessageFor(x => x.Password)*@
                                         </div>
                                         <div class="form-check mb-3">
                                             <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
@@ -55,7 +55,6 @@
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">
-                                    @*<div class="small"><a href="@Url.Action("Index", "Register")">Need an account? Sign up!</a></div>*@
                                 </div>
                             </div>
                         </div>

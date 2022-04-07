@@ -1,4 +1,6 @@
-﻿using AssetManagement.DTO.VM;
+﻿using AssetManagement.BLL.Common;
+using AssetManagement.BLL.Provider;
+using AssetManagement.DTO.DTO;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,19 +11,35 @@ namespace AssetManagement.UI.Controllers
 {
     public class AuthController : Controller
     {
-        public AuthController()
+        AuthProvider _pro;
+        public AuthController(AuthProvider pro)
         {
-
+            _pro = pro;
         }
         public IActionResult Login()
         {
-            return View();
+
+            return View(new LoginDTO());
         }
 
         [HttpPost]
-        public IActionResult LoginIn(LoginVM loginVM)
+        public async Task<IActionResult> Login(LoginDTO loginDTO)
         {
-            return View();
+            try
+            {
+                var token = await _pro.GetToken(loginDTO);
+                if (token != null)
+                {
+                    HttpContext.Session.MySessionSet("token", token);
+                    return RedirectToAction("Index", "Home");
+                }
+
+            }
+            catch (Exception exc)
+            {
+
+            }
+            return RedirectToAction("Login");
         }
         public IActionResult LogOut()
         {

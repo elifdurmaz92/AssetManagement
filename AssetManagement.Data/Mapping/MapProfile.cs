@@ -55,6 +55,7 @@ namespace AssetManagement.Data.Mapping
 
             CreateMap<ActionStatus, ActionStatusDTO>();
             CreateMap<ActionStatusDTO, ActionStatus>();
+
         }
     }
 }
